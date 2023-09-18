@@ -1,0 +1,60 @@
+def turn(x):
+    l = ''
+    while x != 0:
+        l = str(x%2) + l
+        x //= 2
+    while len(l) < 8:
+        l = '0' + l
+    return l
+
+def turnback(x):
+    k = 5
+    num = 0
+    l = ''
+    for i in x:
+        num += int(i)*2**k
+        k -= 1
+    if 0<= num <=25:
+        l = l + chr(65 + num)
+    if 26 <= num <=51:
+        l = l + chr(97 + num-26)
+    if 52<= num <=61:
+        l = l + str(num-52)
+    if num == 62:
+        l = l +'+'
+    if num == 63:
+        l = l +'/'
+    return l
+mingy = input()
+ming1 = []
+miwen = []
+miwen1 = ''
+ming = []
+i = 0 
+while i+3 < len(mingy):
+    ming1.append(mingy[i:i+3])
+    i += 3
+if i != 0:
+    ming1.append(mingy[i::])
+else:
+    ming1.append(mingy)
+for i in ming1:
+    er = ''
+    ming2 = ''
+    for g in i:
+        er += turn(ord(g))
+    if len(er) % 6 == 2:
+        er += '0000'
+    if len(er) % 6 == 4:
+        er += '00'
+    for g in range(0,len(er),6):
+        ming2 += turnback(er[g:g+6])
+    if 24-len(er) == 6:
+        ming2 = ming2 + '='
+    if 24 -len(er) == 12:
+        ming2 = ming2 +'=='
+    ming.append(ming2)
+out = ''
+for i in ming:
+    out += i
+print(out)

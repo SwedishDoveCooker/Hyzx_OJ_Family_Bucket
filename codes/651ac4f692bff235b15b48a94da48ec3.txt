@@ -1,0 +1,69 @@
+z = input()
+z = float(z)
+a = z//100
+b = (z-100*a)//10
+c = (z-100*a-10*b)
+a = float(a)
+b = float(b)
+c = float(c)
+d = 100*a+10*b+c
+e = 100*a+10*c+b
+f = 100*b+10*a+c
+g = 100*b+10*c+a
+h = 100*c+10*a+b
+i = 100*c+10*b+a
+j = i-d
+k = h-f
+l = d-i
+m = e-g
+n = g-e
+o = f-h
+if a<=b<=c:
+    y = j
+elif b<=a<=c:
+    y = k
+elif c<=b<=a:
+    y = l
+elif b<=c<=a:
+    y = m
+elif a<=c<=b:
+     y = n
+elif c<=a<=b:
+     y = o
+elif a==b==c:
+     y = 0     
+while y!=z:
+    a = y//100
+    b = (y-100*a)//10
+    c = (y-100*a-10*b)
+    a = float(a)
+    b = float(b)
+    c = float(c)
+    d = 100*a+10*b+c
+    e = 100*a+10*c+b
+    f = 100*b+10*a+c
+    g = 100*b+10*c+a
+    h = 100*c+10*a+b
+    i = 100*c+10*b+a
+    j = i-d
+    k = h-f
+    l = d-i
+    m = e-g
+    n = g-e
+    o = f-h
+    z = y
+    print(int(y))
+    if a<=b<=c:
+        y = j
+    elif b<=a<=c:
+        y = k
+    elif c<=b<=a:
+        y = l
+    elif b<=c<=a:
+        y = m
+    elif a<=c<=b:
+        y = n
+    elif c<=a<=b:
+        y = o
+    elif a==b==c:
+        y = 0

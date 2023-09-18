@@ -1,0 +1,415 @@
+#英语测试小程序（自制）作者：高二(1)班 200116叶欣昊
+#单词库尚未完成填写
+print('读后续写词块未填入单词，请勿使用')
+print('维克多英语词典A词块的单词均未录入相关用法，请勿查询')
+print('')
+#使用需知：
+print('使用需知：本程序所有的英文输入不兼容大小写，请注意区别')
+print('')
+#单词库录入
+word_a_part1 = ['abandon','aboard','abolish','abortion',
+                'abrupt','absence','absorb','absorbed',
+                'abstract','absurd','abundant','abuse','accelerate']
+mean_a_part1 = ['vt.放弃，遗弃','adv./prep.在飞机上/船上；上船/上飞机',
+                'vt.废除，废止','n.[C,U]人工流产，堕胎',
+                'adj.突然的，意外的，粗鲁的','n.[C,U]缺席，不在',
+                'vt.吸收；理解，掌握；吸纳；缓冲','adj.专心致志的',
+                'adj.抽象的；n.[C,U]抽象派作品；摘要，梗概',
+                'adj.荒谬的，荒唐可笑的','adj.大量的，充足的，丰富的',
+                'vt.滥用；虐待；辱骂','vt.vi.使加速；促进']
+use_a_part1 = ['暂未记录常用用法','暂未记录常用用法','暂未记录常用用法',
+               '暂未记录常用用法','暂未记录常用用法','暂未记录常用用法',
+               '暂未记录常用用法','暂未记录常用用法','暂未记录常用用法',
+               '暂未记录常用用法','暂未记录常用用法','暂未记录常用用法',
+               '暂未记录常用用法',]
+word_Dv = ['declare','accustom','herd','exclaim','persuade']
+mean_Dv = ['宣称','使习惯','群','喊叫','说服']
+use_Dv = ['declare sb. to do sth.','sb. be accustomed to do sth.','a herd of/herds of',
+          'exclaim + [speech]','persuade sb to do sth']
+word_Dadj = []
+mean_Dadj = []
+use_Dadj = []
+word_B2U1 = ['cholera', 'severe', 'diarrhoea', 'dehydration', 'frustrated', 'once and for all', 'contradictory', 'infection', 'infect', 'germ', 'subscribe', 'subscribe to', 'proof', 'multiple', 'pump', 'water pump', 'household', 'suspect', 'blame', 'handle', 'intervention', 'link', 'raw', 'pure', 'substantial', 'decrease', 'thanks to', 'statistic', 'transform', 'epidemiology', 'microscope', 'thinking', 'protein', 'cell', 'virus', 'finding', 'initial', 'vaccine', 'framework', 'theoretical framework', 'solid', 'cast', 'shadow', 'rainbow', 'pour', 'concrete', 'plasma', 'aerospace', 'patriotic', 'mechanical', 'mechanic', 'break out', 'aviation', 'defend', 'jet', 'assistant', 'in charge of', 'missile', 'leadership', 'trace', 'outstanding', 'gifted', 'come down', 'abstract', 'steady', 'concept', 'astronomer', 'astronomy', 'telescope',
+             'besides', 'brilliant', 'furthermore', 'above all', 'fault', 'shift', 'vivid']
+mean_B2U1 = ['n. 霍乱', 'adj. 极为恶劣的；十分严重的；严厉的', 'n. 腹泻', 'n. 脱水', 'adj. 懊恼的；沮丧的；失意的', '最终地；彻底地', 'adj. 相互矛盾的；对立的；不一致的', 'n. 感染；传染', 'vt. 使感染；传染', 'n. 微生物；细菌；病菌', 'vi. 认购（股份）；定期订购；定期交纳（会费）', '同意；赞同', 'n. 证据；证明；检验', 'adj. 数量多的；多种多样的', 'n. 泵；抽水机；打气筒', '水泵', 'n. 一家人；家庭；同住一所（套）房子的人', 'vt. &vi. 怀疑；疑有；不信任 n. 犯罪嫌疑人；可疑对象', 'vt. 把……归咎于；责怪；指责 n. 责备；指责', 'n. 把手；拉手；柄。vt. 处理；搬动；操纵（车辆、动物、工具等）', 'n. 介入；出面；干涉', 'n. 联系；纽带 vt. 把……连接起来；相关联', 'adj. 未煮的；生的；未经处理的；原始的', 'adj. 干净的；纯的；纯粹的', 'adj. 大量的；价值巨大的；重大的', 'n. 减少；降低；减少量  vt.&vi.（使大小、数量等）减少；减小；降低', '幸亏；由于', 'n. [pl.]统计数字；统计资料；统计学', 'vt. 使改观；使改变形态。vi. 改变；转变', 'n. 流行病学', 'n. 显微镜', 'n. 思想；思维；见解 ', 'n. 蛋白质', 'n. 细胞；小房间；单间牢房', 'n. 病毒', 'n. 发现；调查结果；（法律）判决', 'adj. 最初的；开始的；第一的', 'n. 疫苗', 'n. 框架；结构 ', '理论框架', 'adj. 可靠的；固体的；坚实的 n. 固体', 'vt. 投射；向……投以（视线、笑容等）；投掷', 'n. 阴影；影子；背光处', 'n. 彩虹', 'v. 倒出；倾泻；斟（饮料）', 'n. 混凝土 adj. 混凝土制的；确实的；具体的', 'n. 血浆', 'n. 航空航天工业', 'adj. 爱国的 ', 'adj. 机械的；发动机的；机器的', 'n. 机械师；机械修理工', '（战争、打斗等不愉快的事情）突然开始；爆发', 'n. 航空制造业；航空；飞行', 'v. 保卫；防守；辩解', 'n. 喷气式飞机', 'n. 助理；助手', '主管；掌管', 'n. 导弹', 'n. 领导；领导地位；领导才能', 'vt. 追溯；追踪；查出 n. 痕迹；遗迹；踪迹', 'adj. 优秀的；杰出的；明显的', 'adj. 有天赋的；有天才的；天资聪慧的', '患（病）；染上（小病）', 'adj. 抽象的；理性的 n. （文献等的）摘要', 'adj. 稳定的；平稳的；稳步的', 'n. 概念；观念', 'n. 天文学家', 'n. 天文学', 'n. 望远镜', 'prep. 除……之外（还）；adv. 而且；此外', 'adj. 聪颖的；绝妙的；明亮的', 'adv. 此外；再者', '最重要的是；尤其是', 'n. 弱点；过错', 'n. 改变；转换；轮班 vi. &vt. 转移；挪动；转向',
+             'adj. 生动的；鲜明的；丰富的']
+use_B2U1 = ["'暂未记录常用用法'", 'severe damage/crisis    be severe with oneself 严于律己    severe criticism     in a severe voice', "'暂未记录常用用法'", "'暂未记录常用用法'", 'be frustrated at/with sth.     in frustrated rage 发怒   in frustration 懊恼/沮丧地', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", 'be infected with', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", 'multiply … by … 乘', "'暂未记录常用用法'", "'暂未记录常用用法'", 'household expenses/products 家庭开支/家用产品   a household name 家喻户晓的名字', 'suspect that …   suspect sb. of (doing) sth.', 'blame sb./sth. for (doing) sth.   blame sth. on sb./sth.把…归咎于   be to blame (for sth.) （对某事负有责任）   shoulder/take/bear the blame for sth.为某事承担责任   put/lay/place the blame on … 把责任推给…', "（作'处理'翻译时近义有：deal with/cope with/tackle）", "'暂未记录常用用法'", 'link between … and …   link … to/with 把…连接起来/联系起来', 'raw vegetables/meat 生的   raw materials/waste 原材料/未经处理的废弃物', 'pure gold/water/air/English   by pure chance 纯属偶然 purely 完全地；纯粹地', '( = considerable)   a substantial change/decrease 重大变化    a substantial salary/breakfast 丰厚的薪水/丰盛的早餐', 'decrease by/to 减少了/减少到', '( = owing to/because of/due to)', "'暂未记录常用用法'", 'transform … into', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", 'be cast down 沮丧的   cast a shadow over/on (=made it less pleasant)    cast a look at', 'cast a shadow over/on (=made it less pleasant)', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", 'fire/war/disease break out', "'暂未记录常用用法'", 'defend … from/against', "'暂未记录常用用法'", "'暂未记录常用用法'", 'sb. be in charge of sth./sth. be in the charge of sb.', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", 'have a gift for    be gifted/talented in', 'come down with sth. 患病', "'暂未记录常用用法'", 'a steady income', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "besides/in addition/what's more/furthermore/additionally", 'a brilliant scientist/musician 杰出的     a brilliant idea/thought/design', "'暂未记录常用用法'", "'暂未记录常用用法'", "'暂未记录常用用法'", "be on the day/night shift 值日/夜班   shift one's ground = change one's opinion",
+            'a vivid description/imagination']
+word_Jayce = ['cautious', 'alternative', 'permanent', 'dose',
+              'substitute', 'hack', 'gadget', 'boost', 'instability', 'primal', 'concept', 'rumble', 'swirl']
+mean_Jayce = ['adj.小心谨慎的', 'n.可供选择的事物，选择', 'adj.永久的，永恒的', 'n.一次，一场，一点', 'n.[C]代替者，代替品 v.(以…)取代，代替', 'v.入侵；砍/劈；(vt.)猛踢 n.[C]杂物人员；出租车；砍击', 'n.小设备，小装置', 'vt.使增长；使兴旺', 'n.不稳定，不稳固', 'adj. (仅用于定语) 原始的；根本的；最初的；本能的', 'n.观念；概念',
+              'v.发出轰隆声  vt.发现…的真相/看穿', 'v.旋转；转动']
+use_Jayce = ['暂未记录常用用法', '暂未记录常用用法', '暂未记录常用用法', 'a dose of 一点，一场，一次 like a dose of salt (用作状语) 迅速轻易地，轻而易举地，一下子', 'n. a substitute for …的替代品 v. substitute for sb./sth. 取代 substitute A for B 用A取代B = substitute B with/by A', 'can(not) hack it (不)能应付(某情形)', '暂未记录常用用法', 'boost one’s confidence/ego', '暂未记录常用用法', '暂未记录常用用法', 'concept of sth./concept that…',
+             'eg: the rumbling thunder 轰鸣的雷声 one’s stomach is rumbling 肚子咕咕叫', 'eg: the swirling mists 缭绕的薄雾']
+
+#定义函数
+def testinput(testlist,back_true,back_in):
+    print(back_in)
+    inp = input().split()
+    flag00 = True
+    while flag00:
+        flag01 = True
+        for i in inp:
+            if i not in testlist:
+                flag01 = False
+                break
+        if flag01:
+            flag00 = False
+            print(back_true)
+            return inp
+        else:
+            print('输入错误!'+back_in)
+            inp = input().split()
+
+def testchoice(testlist,back_true,back_out):
+    inp = input()
+    while inp not in testlist:
+        print(back_out)
+        inp = input()
+    else:
+        print(back_true)
+    return inp
+
+
+
+#单词库选择
+wordbank = {'A':word_a_part1,'Dv':word_Dv,'Dadj':word_Dadj,'Jayce':word_Jayce,'B2U1':word_B2U1}
+meanbank = {'A':mean_a_part1,'Dv':mean_Dv,'Dadj':mean_Dadj,'Jayce':mean_Jayce,'B2U1':mean_B2U1}
+usebank = {'A':use_a_part1,'Dv':use_Dv,'Dadj':use_Dadj,'Jayce':use_Jayce,'B2U1':use_B2U1}
+key_list = []
+for key in wordbank:
+    key_list.append(key)
+word = []
+mean = []
+use = []
+choice = testinput(key_list,'','请选择单词库：A：维克多英语词典A词块；Dv：读后续写常用动词; Jayce：叶某的笔记词汇；B2U1：英语教材选修二第一单元')
+for i in choice:
+    if i in key_list:
+        word += wordbank[i]
+        mean += meanbank[i]
+        use += usebank[i]
+
+
+#词块录入
+word_悲伤 = []
+word_说 = []
+word_水 = []
+word_测试1 = ['declare','accustom','herd']
+word_测试2 = ['declare','accustom']
+word_测试3 = ['exclaim','persuade']
+wordbank_dic = {'sad':word_悲伤,'say':word_说,'water':word_水,'test1':word_测试1,'test2':word_测试2,'test3':word_测试3}
+
+key_in_list = []
+for key in wordbank_dic:
+    key_in_list.append(key)
+
+#同根词录入
+#rootbank = {}
+#for i in word:
+#    rootbank[i] = '当前单词库尚未录入相关同根词，可尝试退出程序并重新选择单词库'
+#rootbank['absence'] = ['absence','absent']
+#录入分界
+#for value in rootbank:
+#    for i in value:
+#        rootbank[i] = value
+
+
+#去重
+word_去重 = list(set(word))
+if len(word_去重) != len(word):
+    word_record_去重 = [] + word
+    for i in word_去重:
+        word_record_去重.remove(i)
+    for i in word_record_去重:
+        k0 = word.index(i)
+        del word[k0]
+        del mean[k0]
+        del use[k0]
+
+
+#正式运行
+import random
+mode = ''
+option = ['1','2','3','4']
+while mode != 'D':
+    print('请选择模式：A.英译汉选择;  B.汉译英选择;  C.汉译英拼写;  D.退出;  check:快速查词;  exam:测试模式')
+    mode = input()
+    game = []
+    if mode == 'A':
+        show = []
+        asc = 1
+        pr = {}
+        print('输入h以引入所有录入释义，其他任意字符继续')
+        h = input()
+        if h =='h':
+            meanre = mean
+            meanc = mean_Dv  + mean_a_part1 + mean_Jayce + mean_B2U1
+        while 't' not in game:#英译汉选择模式调试
+            game = []
+            aim_num = random.randint(0,len(word)-1)
+            aim_word = word[aim_num]
+            aim_mean = mean[aim_num]
+            show.append(aim_mean)
+            mean = meanc
+            while len(show)<4:
+                test_mean = mean[random.randint(0,len(word)-1)]
+                if test_mean not in show:
+                    show.append(test_mean)
+            while len(show)>0:
+                r = random.randint(0,len(show)-1)
+                pr[str(asc)] = show[r]
+                asc += 1
+                del show[r]
+            asc = 1
+            print(aim_word)
+            for key in pr:
+                print(key,pr[key])
+            ch = testchoice(option,'','请正常选择')
+            if pr[ch] == aim_mean:
+                print('回答正确')
+            else:
+                print('回答错误，正确答案是：'+aim_mean)
+            print('输入1查看单词对应用法，输入2查看同根词，输入3本次使用期间从单词库中删除此单词，退出汉译英填空请输入t，回车或输入任意其他字符以继续')
+            game = input()
+            if '1' in game:
+                i = word.index(aim_word)
+                print('常用用法：',use[i])
+                print('')
+            if '3' in game:
+                k1 = word.index(aim_word)
+                del word[k1]
+                del mean[k1]
+                del use[k1]
+                print('删除成功，本次使用期间此单词将不再出现在除相关词块、同根词外的地方')
+            mean = meanre
+    elif mode == 'B':#汉译英选择模式调试
+        show = []
+        asc = 1
+        pr = {}
+        while 't' not in game:
+            game = []
+            aim_num = random.randint(0,len(word)-1)
+            aim_word = word[aim_num]
+            aim_mean = mean[aim_num]
+            show.append(aim_word)
+            while len(show)<4:
+                test_word = word[random.randint(0,len(word)-1)]
+                if test_word not in show:
+                    show.append(test_word)
+            while len(show)>0:
+                r = random.randint(0,len(show)-1)
+                pr[str(asc)] = show[r]
+                asc += 1
+                del show[r]
+            asc = 1
+            print(aim_mean)
+            for key in pr:
+                print(key,pr[key])
+            ch = input()
+            while ch not in option:
+                print('请正常选择')
+                ch = input()
+            if pr[ch] == aim_word:
+                print('回答正确')
+            else:
+                print('回答错误，正确答案是：'+aim_word)
+            print('输入1查看单词对应用法，输入2查看同根词，输入3本次使用期间从单词库中删除此单词，退出汉译英填空请输入t，回车或输入任意其他字符以继续')
+            game = input().split()
+            if '1' in game:
+                i = word.index(aim_word)
+                print('常用用法：',use[i])
+                print('')
+            if '3' in game:
+                k1 = word.index(aim_word)
+                del word[k1]
+                del mean[k1]
+                del use[k1]
+                print('删除成功，本次使用期间此单词将不再出现在除相关词块、同根词外的地方')
+    elif mode == 'C':#汉译英拼写模式调试
+        show = []
+        asc = 1
+        while 't' not in game:
+            game = []
+            aim_num = random.randint(0,len(word)-1)
+            aim_word = word[aim_num]
+            aim_mean = mean[aim_num]
+            print(aim_mean)
+            ch = input()
+            if ch == aim_word:
+                print('回答正确')
+            else:
+                print('回答错误，正确答案是：'+aim_word)
+            print('输入1查看单词对应用法，输入2查看同根词，输入3本次使用期间从单词库中删除此单词，退出汉译英填空请输入t，回车或输入任意其他字符以继续')
+            game = input().split()
+            if '1' in game:
+                i = word.index(aim_word)
+                print('常用用法：',use[i])
+                print('')
+            if '3' in game:
+                k1 = word.index(aim_word)
+                del word[k1]
+                del mean[k1]
+                del use[k1]
+                print('删除成功，本次使用期间此单词将不再出现在除相关词块、同根词外的地方')
+    elif mode == 'check':
+        while 't' not in game:
+            game = []
+            print('请输入要查询的模式：1：查询单词；2：查询类似词块')
+            check_mode = input()
+            check_mode_list = ['1','2']
+            while check_mode not in check_mode_list:
+                print('输入错误！请输入要查询的模式：1：查询单词；2：查询类似词块：')
+                check_mode = input()
+            if check_mode == '1':
+                print('请输入要查询的单词英文：')
+                check_word = input()
+                if check_word not in word:
+                    print('此单词尚未录入当前选择词库或本次已被删除')
+                else:
+                    k00 = word.index(check_word)
+                    print('汉语释义：',mean[k00])
+                    print('常用用法：',use[k00])
+                    dic_wordbank_pr = {}
+                    list_cikuai = []
+                    flag_wordbank_dic = True
+                    print('输入R以获得同根词信息')
+                    for key,value in wordbank_dic.items():
+                        if check_word in value:
+                            print('输入'+key+'以获得'+'词块'+key+'相关信息')
+                            list_cikuai.append(key)
+                            flag_wordbank_dic = False
+                    if flag_wordbank_dic:
+                        print('无相关词块信息')
+                    cikuai = input().split()
+                    for i in cikuai:
+                        if i in key_in_list:
+                            print(wordbank_dic[i])
+                    #if 'R' in cikuai:
+                        #print(rootbank[check_word])
+            if check_mode == '2':
+                list_cikuai1 = []
+                for key in wordbank_dic:
+                    list_cikuai1.append(key)
+                for key in wordbank_dic:
+                    print('输入'+key+'以获取词块'+key+'相关信息')
+                cikuai1 = input()
+                while cikuai1 not in list_cikuai1:
+                    print('请输入'+list_cikuai1+'中的索引')
+                    cikuai1 = input()
+                    print(wordbank_dic[cikuai1])
+            print('输入t以退出check，输入其他任意字符继续')
+            game = input().split()
+    elif mode == 'exam':
+        while 't' not in game:
+            game = []
+            score = 0
+            print('请输入英译汉选择，汉译英选择，汉译英拼写三种题型分别的题数（空格分隔，没有的题型输入0）')
+            examlist = list(map(int,input().split()))
+            while len(examlist) != 3:
+                print('输入错误！请输入英译汉选择，汉译英选择，汉译英拼写三种题型分别的题数（空格分隔，没有的题型输入0）')
+                examlist = list(map(int,input().split()))
+            sum_exam = sum(examlist)
+            print('选择成功，本次测试总题数为：'+str(sum_exam))
+            answered = 0#回答题数
+            show = []
+            asc = 1
+            pr = {}
+            listrA = []
+            for i in range(examlist[0]):
+                aim_num = random.randint(0,len(word)-1)
+                while aim_num in listrA:
+                    aim_num = random.randint(0,len(word)-1)
+                listrA.append(aim_num)#去重装置
+                aim_word = word[aim_num]
+                aim_mean = mean[aim_num]
+                show.append(aim_mean)
+                while len(show)<4:
+                    test_mean = mean[random.randint(0,len(word)-1)]
+                    if test_mean not in show:
+                        show.append(test_mean)
+                while len(show)>0:
+                    r = random.randint(0,len(show)-1)
+                    pr[str(asc)] = show[r]
+                    asc += 1
+                    del show[r]
+                asc = 1
+                print(aim_word)
+                for key in pr:
+                    print(key,pr[key])
+                ch = input()
+                while ch not in option:
+                    print('请正常选择')
+                    ch = input()
+                answered += 1
+                if pr[ch] == aim_mean:
+                    score += 1
+                    print('回答正确，分数+1，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+                else:
+                    print('回答错误，正确答案是：'+aim_mean+'，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+            print('')
+            print('')
+            #
+            show = []
+            asc = 1
+            pr = {}
+            listrB = []
+            for i in range(examlist[1]):
+                aim_num = random.randint(0,len(word)-1)
+                while aim_num in listrB:
+                    aim_num = random.randint(0,len(word)-1)
+                listrB.append(aim_num)
+                aim_word = word[aim_num]
+                aim_mean = mean[aim_num]
+                show.append(aim_word)
+                while len(show)<4:
+                    test_word = word[random.randint(0,len(word)-1)]
+                    if test_word not in show:
+                        show.append(test_word)
+                while len(show)>0:
+                    r = random.randint(0,len(show)-1)
+                    pr[str(asc)] = show[r]
+                    asc += 1
+                    del show[r]
+                asc = 1
+                print(aim_mean)
+                for key in pr:
+                    print(key,pr[key])
+                ch = input()
+                while ch not in option:
+                    print('请正常选择')
+                    ch = input()
+                answered += 1
+                if pr[ch] == aim_word:
+                    score += 1
+                    print('回答正确，分数+1，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+                else:
+                    print('回答错误，正确答案是：'+aim_word+'，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+                print('')
+                print('')
+            show = []
+            asc = 1
+            listrC = []
+            for i in range(examlist[2]):
+                aim_num = random.randint(0,len(word)-1)
+                while aim_num in listrC:
+                    aim_num = random.randint(0,len(word)-1)
+                listrC.append(aim_num)
+                aim_word = word[aim_num]
+                aim_mean = mean[aim_num]
+                print(aim_mean)
+                ch = input()
+                answered += 1
+                if ch == aim_word:
+                    score += 1
+                    print('回答正确，分数+1，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+                else:
+                    print('回答错误，正确答案是：'+aim_word+'，当前已回答总题数为'+str(answered)+'，当前分数为'+str(score))
+                print('')
+                print('')
+            print('本次测试共'+str(sum_exam)+'题，答对'+str(score)+'道，正确率为'+format(score/sum_exam*100,'.2f')+'%')
+            print('输入t以退出测试模式，输入其他任意字符以继续')
+            game = input().split()
+
+            
+    elif mode != 'D':
+        print('输入错误！')

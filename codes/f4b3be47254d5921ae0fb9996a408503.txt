@@ -1,0 +1,57 @@
+def aa(s,i,j):
+    flag = False
+    m = s[i][j]
+    while 0<=i-1<=9 and 0<=j<=9 and s[i-1][j] == m:
+        i-=1
+    n = 1
+    while 0<=i+1<=9 and 0<=j<=9 and s[i+1][j] == m:
+        i+=1
+        n+=1
+        if n >= 5:
+            flag = True
+    return flag
+
+def bb(s,i,j):
+    flag = False
+    m = s[i][j]
+    while 0<=i<=9 and 0<=j-1<=9 and s[i][j-1] == m:
+        j-=1
+    n = 1
+    while 0<=i<=9 and 0<=j+1<=9 and s[i][j+1] == m:
+        j+=1
+        n+=1
+        if n >= 5:
+            flag = True
+    return flag
+
+
+def cc(s,i,j):
+    flag = False
+    m = s[i][j]
+    while 0<=i-1<=9 and 0<=j-1<=9 and s[i-1][j-1] == m:
+        j-=1
+        i-=1
+    n = 1
+    while 0<=i+1<=9 and 0<=j+1<=9 and s[i+1][j+1] == m:
+        j+=1
+        i+=1
+        n+=1
+        if n >= 5:
+            flag = True
+    return flag
+
+s = []
+for i in range(10):
+    x = list(map(int,input().split()))
+    s.append(x)
+i,j,k = map(int,input().split(','))
+i=i-1
+j=j-1
+if s[i][j] != 0:
+    print('Error')
+else:
+    s[i][j] = k
+    if aa(s,i,j)==True or bb(s,i,j)==True or cc(s,i,j)==True :
+        print('Yes')
+    else:
+        print('No')

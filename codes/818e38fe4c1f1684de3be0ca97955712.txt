@@ -1,0 +1,73 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <queue>
+
+using namespace std;
+struct node{
+    int idx,num;
+}p[8005],pwan[8005],pmaru[8005];
+bool cmp(node aa,node bb){
+    if(aa.num==bb.num)return aa.idx<bb.idx;
+    return aa.num<bb.num;
+}
+// void msort(int b,int e)
+// {
+//     if(b==e)  
+// 		return;
+//     int mid=(b+e)/2,i=b,j=mid+1,k=b;
+//     msort(b,mid),msort(mid+1,e);
+//     while(i<=mid&&j<=e)
+//     	if(a[i]<=a[j])
+//     		c[k++]=a[i++];
+//     	else
+//     		c[k++]=a[j++],ans+=mid-i+1;
+//     while(i<=mid)
+//     	c[k++]=a[i++];
+//     while(j<=e)
+//     	c[k++]=a[j++];
+//     for(int l=b;l<=e;l++)
+//     	a[l]=c[l];
+// } 
+
+int n,m;
+int main()
+{
+    cin.tie(0)->ios::sync_with_stdio(0),cout.tie(0);
+    cin>>n;
+    cin>>m;
+    for(int i=1;i<=n;i++){
+        cin>>p[i].num;pwan[i].num=p[i].num;
+        p[i].idx=i;pwan[i].idx=i;
+    }
+    while (m -- ){
+        int l;cin>>l;
+        if(l&1){
+            int x,v;
+            cin>>x>>v;
+            pwan[x].num=v;
+            for(int i=1;i<=n;i++){
+                p[i].num=pwan[i].num;
+                p[i].idx=pwan[i].idx;
+            }
+        }
+        else{
+            int x;
+            cin>>x;
+            sort(p+1,p+1+n,cmp);
+            int ans=0;
+            for(int i=1;i<=n;i++){
+                if(p[i].idx==x){
+                    ans=i;break;
+                }
+            }
+            if(!ans)
+            for(int i=1;i<=n;i++){
+                if(p[i].idx==x){
+                    cout<<i<<endl;break;
+                }
+            }
+            ans=0;
+        }
+    }
+}

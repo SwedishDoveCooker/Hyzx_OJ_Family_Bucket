@@ -1,0 +1,546 @@
+m = list(input())
+s = list(input())
+for i in range(len(s)):
+    if s[i] <= 'Z':
+        s[i] = chr((ord(s[i]) + ord(m[i % len(m)]) - 2 * ord('A')) % 26 + ord('A'))
+    elif s[i] <= 'z':
+        s[i] = chr((ord(s[i]) + ord(m[i % len(m)]) - ord('A') - ord('a')) % 26 + ord('a'))
+for i in s:
+    print(i, end='')
+
+
+'''
+import random
+import time
+
+def ruchang():
+    print(f'\【=======天黑请闭眼（7人局，单人版）=======】/')
+    time.sleep(1)
+    print('>>>>>>>请看游戏说明-------')
+    time.sleep(1)
+    print('>>>>>>>局内角色：2平民，2狼人，1猎人，1预言家，1女巫。分为7个玩家，'
+         '玩家入场默认为1号玩家，随机抽取角色进入游戏。')
+    time.sleep(1)
+    print('>>>>>>>下面懂游戏规则的玩家可自行跳过，不知道游戏规则的新手玩家可查看-------')
+    time.sleep(1)
+    print('>>>>>>>是否跳过？')
+    print('a.跳过    b.不跳过')
+    a = input()
+    if a == 'b' :
+        print('>>>>>>>平民：没有任何技能，可谓手无缚鸡之力，坐吃等死的吃瓜角色，'
+              '但死光了就输了,所以要藏好。')
+        time.sleep(1)
+        print('>>>>>>>狼人：每晚可指定杀人一次，杀光除自己外的所有人。')
+        time.sleep(1)
+        print('>>>>>>>猎人：你想杀死我？跟我一起下地狱去吧。死后可以带走一人。')
+        time.sleep(1) 
+        print('>>>>>>>预言家：每回合可以预判某一名玩家的身份。')
+        time.sleep(1)
+        print('>>>>>>>女巫：手中有两瓶药，一瓶毒药，一瓶解药，可以毒死一次人，'
+              '也可救活一次人。')
+    time.sleep(1)     
+    print('>>>>>>>>-------游戏开始--------')
+
+def kaishi():
+    list=['平民', '平民', '狼人', '狼人', '猎人', '预言家', '女巫']
+    w = 0
+    s = 6
+    wan = []
+    suo = []
+    ping = []
+    lang = []
+    fie = []
+    nv = []
+    lie = []
+    yu = []
+    ren = ['玩家1', '玩家2', '玩家3', '玩家4', '玩家5', '玩家6', '玩家7']
+    jian = ['玩家1', '玩家2', '玩家3', '玩家4', '玩家5', '玩家6', '玩家7']
+    while w != 7:
+        b = random.randint(0,6)
+        if b <= s :
+            w = w + 1
+            玩家w = list[b]
+            if list[b] == '狼人':
+                lang.append(w)
+            else :
+                fie.append(w)
+            if list[b] == '平民':
+                ping.append(w)
+            if list[b] != '女巫' :
+                nv.append(w)
+            if list[b] != '猎人' :
+                lie.append(w)
+            if list[b] == '预言家' :
+                yu.append(w)
+            list.remove(list[b])
+            wan.append(玩家w)
+            suo.append(玩家w)
+            s = s - 1
+    玩家1 = wan[0]
+    玩家2 = wan[1]
+    玩家3 = wan[2]
+    玩家4 = wan[3]
+    玩家5 = wan[4]
+    玩家6 = wan[5]
+    玩家7 = wan[6]
+    jie = 1
+    du = 1
+    print('>>>>>>>你的角色为：',玩家1)
+    num = 0
+    v = 0
+    while True:
+        if '狼人' in wan and  '平民'  in wan :
+            num = num + 1
+            time.sleep(1)
+            print(f'\=======第{num}回合=======/')
+            time.sleep(1)
+            print('>>>>>>>天黑请闭眼，狼人请睁眼。')
+            time.sleep(1)
+            if 玩家1 == '狼人':
+                print(f'>>>>>>>狼人想要杀掉谁？玩家{lang[1]}是狼人。')
+                m = int(input('输入玩家数字：'))
+            else :
+                x = 1
+                while x != 0:
+                    b = random.randint(1,7)
+                    if b in fie and wan[b - 1] != '0' :
+                        m = b
+                        break
+            if '女巫' in wan and '预言家' not in wan  :
+                time.sleep(1)
+                print('>>>>>>>狼人请闭眼，女巫请睁眼。')
+            elif '女巫' not in wan and '预言家' not in wan  :
+                time.sleep(1)
+                print('>>>>>>>狼人请闭眼，天亮了。')
+            if '预言家' in wan :
+                print('>>>>>>>狼人请闭眼，预言家请睁眼。')
+                time.sleep(1) 
+                if 玩家1 == '预言家':
+                    print('>>>>>>>预言家想要预言哪位人的身份？')
+                    h = int(input('输入玩家数字：'))
+                    time.sleep(1)
+                    print(f'>>>>>>>玩家{h}的身份为{suo[h - 1]}')
+                else:
+                    x = 1
+                    while x != 0 :
+                        b = random.randint(1,7)
+                        if b not in yu and wan[b - 1] != '0':
+                            h = b
+                            break
+                        
+            if '预言家' in wan and '女巫' not in wan:
+                time.sleep(1)
+                print('>>>>>>>预言家请闭眼，天亮了。')
+            elif '预言家' in wan and '女巫' in wan:
+                time.sleep(1)
+                print('>>>>>>>预言家请闭眼，女巫请睁眼。')
+            if '女巫' in wan :
+                if 玩家1 == '女巫' :
+                    if jie == 1 :
+                        time.sleep(1)
+                        print(f'>>>>>>>今晚被杀的是玩家{m}，是否使用解药？')
+                        print('a.是  b.否')
+                        b = input()
+                        time.sleep(1) 
+                        if b == 'b' :
+                            wan[m - 1] = '0'
+                            print('>>>>>>>尊重你的选择。')
+                        if b == 'a' :
+                            print('>>>>>>>真是个热心肠的女巫。')
+                            jie = 0
+                    else :
+                        time.sleep(1)
+                        print('>>>>>>>你已经没有解药了。')
+                        wan[m - 1] = '0'
+                    if du == 1 :
+                        time.sleep(1)
+                        print('>>>>>>>你还有一瓶毒药是否使用？')
+                        print('a.是  b.否')
+                        b = input()
+                        time.sleep(1)
+                        if b == 'a':
+                            print('>>>>>>>请问对哪位玩家使用？')
+                            n = int(input('输入玩家数字：'))
+                            wan[n - 1] = '0'
+                            du = 0
+                        else :
+                            print('>>>>>>>请谨慎使用。')
+                    if jie == 0 and du == 0 :
+                        time.sleep(1)
+                        print('>>>>>>>你已经没有任何药水了。')
+                else:
+                    if jie == 0:
+                        wan[m - 1] = '0'
+                    while du == 1 :
+                        y = random.randint(1,4)
+                        if y == 1:
+                            b = random.randint(1,7)
+                            if b in nv and wan[b - 1] != '0':
+                                n = b
+                                wan[n - 1] = '0'
+                                du = 0
+                                break   
+                        else :
+                            break
+                    while jie == 1 :
+                        y = random.randint(1,4)
+                        if y == 1 :
+                            wan[m - 1] = '0'
+                            break
+                        else:
+                            jie = 0
+                            break
+                time.sleep(1)        
+                print('>>>>>>>女巫请闭眼，天亮了。')
+            elif '女巫' not in wan:
+                wan[m - 1] = '0'
+            x = 0
+            for i in wan:
+                if i == '0':
+                    x = x + 1
+            while x == v + 2:
+                time.sleep(1)
+                print(f'>>>>>>>第{num}晚上玩家{m},玩家{n}被杀')
+                if m == 1 :
+                    ren.remove(jian[0])
+                    if suo[m - 1] == '猎人' :
+                        time.sleep(1)
+                        print('>>>>>>>你已死亡，可以选择带走一人。')                        
+                        while True:
+                            c = int(input('输入玩家数字：'))
+                            if wan[c - 1] == '0':
+                                time.sleep(1)
+                                print('>>>>>>>你确定要带走一个死人？')
+                            else:
+                                wan[c - 1] = '0'
+                                x = x + 1
+                                ren.remove(jian[c - 1])
+                                break
+                    else:
+                        time.sleep(1)
+                        print('>>>>>>>你可以留下你的遗言（虽然没什么用）')
+                        b = input()
+                        break
+                if n == 1 :
+                    ren.remove(jian[0])
+                    if suo[n - 1] == '猎人':
+                        time.sleep(1)
+                        print('>>>>>>>你已死亡，可以选择带走一人。')                        
+                        while True:
+                            c = int(input('输入玩家数字：'))
+                            if wan[c - 1] == '0':
+                                time.sleep(1)
+                                print('>>>>>>>你确定要带走一个死人？')
+                            else:
+                                wan[c - 1] = '0'
+                                x = x + 1
+                                ren.remove(jian[c - 1])
+                                break
+                    else:
+                        time.sleep(1)
+                        print('>>>>>>>你可以留下你的遗言（虽然没什么用）')
+                        b = input()
+                        break
+                else:
+                    if suo[m - 1] != '平民':
+                        ren.remove(jian[m - 1])
+                        time.sleep(1)
+                        print(f'>>>>>>>玩家{m}的身份为{suo[m - 1]}')
+                        if suo[m - 1] == '预言家' :
+                            time.sleep(1)
+                            if suo[h - 1] == '狼人':
+                                print(f'预言家：玩家{h}的身份为狼人')
+                            else :
+                                print(f'预言家：玩家{h}的身份是好人')
+                        elif suo[m - 1] == '猎人' :
+                            time.sleep(1)
+                            print('猎人：我死也要带走一个！')
+                            while True:
+                                b = random.randint(1,7)
+                                if b in lie and wan[b - 1] != '0':
+                                    wan[b - 1] = '0'
+                                    time.sleep(1)
+                                    print(f'玩家{b}跟我下地狱。')
+                                    ren.remove(jian[b - 1])
+                                    x = x + 1
+                                    break
+                        elif suo[m - 1] == '女巫' :
+                            time.sleep(1)
+                            print('女巫：我是个好女巫吗？')
+                    else:
+                        ren.remove(jian[m - 1])
+                    if suo[n - 1] != '平民':
+                        ren.remove(jian[n - 1])
+                        time.sleep(1)
+                        print(f'>>>>>>>玩家{n}的身份为{suo[n - 1]}')
+                        if suo[n - 1] == '预言家' :
+                            time.sleep(1)
+                            if suo[h - 1] == '狼人':
+                                print(f'预言家：玩家{h}的身份为狼人')
+                            else :
+                                print(f'预言家：玩家{h}的身份是好人')
+                        elif suo[n - 1] == '猎人' and wan[n - 1] :
+                            time.sleep(1)
+                            print('猎人：我死也要带走一个！')
+                            while True:
+                                b = random.randint(1,7)
+                                if b in lie and wan[b - 1] != '0':
+                                    wan[b - 1] = '0'
+                                    time.sleep(1)
+                                    print(f'玩家{b}跟我下地狱。')
+                                    ren.remove(jian[b - 1])
+                                    x = x + 1
+                                    break
+                        elif suo[n - 1] == '狼人' :
+                            time.sleep(1)
+                            print('狼人：我还有另一个伙伴。')
+                    else:
+                        ren.remove(jian[n - 1])
+                    break
+            while x == v + 1:
+                if wan[m - 1] == '0':
+                    ren.remove(jian[m - 1])
+                    time.sleep(1)
+                    print(f'>>>>>>>第{num}晚上玩家{m}被杀')
+                    if m == 1 :
+                        if suo[m - 1] == '猎人' :
+                            time.sleep(1)
+                            print('>>>>>>>你已死亡，可以选择带走一人。')                        
+                            while True:
+                                c = int(input('输入玩家数字：'))
+                                if wan[c - 1] == '0':
+                                    time.sleep(1)
+                                    print('>>>>>>>你确定要带走一个死人？')
+                                else:
+                                    wan[c - 1] = '0'
+                                    ren.remove(jian[c - 1])
+                                    x = x + 1
+                                    break
+                        else:
+                            time.sleep(1)
+                            print('>>>>>>>你可以留下你的遗言（虽然没什么用）')
+                            b = input()
+                            break
+                    else:
+                        if suo[m - 1] != '平民':
+                            time.sleep(1)
+                            print(f'>>>>>>>玩家{m}的身份为{suo[m - 1]}')
+                            if suo[m - 1] == '预言家' :
+                                time.sleep(1)
+                                if suo[h - 1] == '狼人':
+                                    print(f'预言家：玩家{h}的身份为狼人')
+                                else :
+                                    print(f'预言家：玩家{h}的身份是好人')
+                            elif suo[m - 1] == '猎人' :
+                                time.sleep(1)
+                                print('猎人：我死也要带走一个！')
+                                while True:
+                                    b = random.randint(1,7)
+                                    if b in lie and wan[b - 1] != '0':
+                                        wan[b - 1] = '0'
+                                        time.sleep(1)
+                                        print(f'玩家{b}跟我下地狱。')
+                                        ren.remove(jian[b - 1])
+                                        x = x + 1
+                                        break
+                            elif suo[m - 1] == '女巫' :
+                                time.sleep(1)
+                                print('女巫：我是个好女巫吗？')
+                        break
+                elif wan[n - 1] == '0':
+                    ren.remove(jian[n - 1])
+                    time.sleep(1)
+                    print(f'>>>>>>>第{num}晚上玩家{n}被杀')
+                    if n == 1 :
+                        if suo[n - 1] == '猎人' :
+                            time.sleep(1)
+                            print('>>>>>>>你已死亡，可以选择带走一人。')                        
+                            while True:
+                                c = int(input('输入玩家数字：'))
+                                if wan[c - 1] == '0':
+                                    time.sleep(1)
+                                    print('>>>>>>>你确定要带走一个死人？')
+                                else:
+                                    wan[c - 1] = '0'
+                                    ren.remove(jian[c - 1])
+                                    x = x + 1
+                                    break
+                        else:
+                            time.sleep(1)
+                            print('>>>>>>>请留下你的遗言（虽然没什么用）')
+                            b = input()
+                            break
+                    else:
+                        if suo[n - 1] != '平民':
+                            time.sleep(1)
+                            print(f'>>>>>>>玩家{n}的身份为{suo[n - 1]}')
+                            if suo[n - 1] == '预言家' :
+                                time.sleep(1)
+                                if suo[h - 1] == '狼人':
+                                    print(f'预言家：玩家{h}的身份为狼人')
+                                else :
+                                    print(f'预言家：玩家{h}的身份是好人')
+                            elif suo[n - 1] == '猎人' :
+                                time.sleep(1)
+                                print('猎人：我死也要带走一个！')
+                                while True:
+                                    b = random.randint(1,7)
+                                    if b in lie and wan[b - 1] != '0':
+                                        wan[b - 1] = '0'
+                                        time.sleep(1)
+                                        print(f'玩家{b}跟我下地狱。')
+                                        ren.remove(jian[b - 1])
+                                        x = x + 1
+                                        break
+                            elif suo[n - 1] == '狼人' :
+                                time.sleep(1)
+                                print('狼人：我还有另一个伙伴。')
+                        break
+            if x == v :
+                time.sleep(1)
+                print(f'>>>>>>>第{num}晚上，是平安夜')
+            if '平民' not in wan :
+                print('>>>>>>>游戏结束，狼人胜利!')
+                break
+            elif '狼人' not in wan :
+                print('>>>>>>>游戏结束，好人胜利!')
+                break
+            elif len(ren) == 2 and '狼人' in wan and '平民' not in wan:
+                print('>>>>>>>游戏结束，狼人胜利!')
+                break
+            k = 0
+            if i in wan:
+                if i == '狼人':
+                    k = k + 1
+            if (len(ren) == 5 and k == 2) or (len(ren) == 4 and k == 2) :
+                b = random.randint(1,6)
+                if b == 1 :
+                    print('>>>>>>>狼人自爆，直接进入黑夜。')
+                while b != 1 :
+                    time.sleep(1)
+                    print('>>>>>>>下面是投票环节，各幸存玩家陈词。')
+                    if wan[0] != '0' :
+                        time.sleep(1)
+                        print('>>>>>>>请开始你的表演')
+                        c = input()
+                    if '狼人' in wan and wan[0] != '狼人':
+                        time.sleep(1)
+                        ls = ['一个声音：还在还在，等你呢。','一个声音：好人一生平安。','一个声音：下一轮，快点，快点。']
+                        c = random.randint(0,2)
+                        print(ls[c])
+                    if '预言家' in wan and wan[0] != '预言家':
+                        time.sleep(1)
+                        ys = ['另一个声音：我是人，但我在普度众生。','另一个声音：这世上本没有光，因为我的到来，所以有了光。','另一个声音：让我猜猜还有谁。']
+                        c = random.randint(0,2)
+                        print(ys[c])
+                    if '女巫' in wan and wan[0] != '女巫':
+                        time.sleep(1)
+                        ns = ['又一个声音：你要死还是活，选一个。','又一个声音：我能复活一次，你呢？','又一个声音：谁又动了杀人的心思？']
+                        c = random.randint(0,2)
+                        print(ns[c])
+                    if '猎人' in wan and wan[0] != '猎人':
+                        time.sleep(1)
+                        rs = ['冒出一声音：投我投我。','冒出一声音：我手里有个小王八，我从来也不急。','冒出一声音：别墨迹，我等着下地狱呢。']
+                        c = random.randint(0,2)
+                        print(rs[c])
+                    if '平民' in wan and wan[0] != '平民' :
+                        time.sleep(1)
+                        ms = ['一声道：再等等，别急着投。','一声道：稍安勿躁，小心狼人。','一声道：白天与黑夜哪个更长些？']
+                        c = random.randint(0,2)
+                        print(ms[c])
+                    break
+            else:
+                time.sleep(1)
+                print('>>>>>>>下面是投票环节，各幸存玩家陈词。')
+                if wan[0] != '0' :
+                    time.sleep(1)
+                    print('>>>>>>>请开始你的表演')
+                    c = input()
+                if '狼人' in wan and wan[0] != '狼人':
+                    time.sleep(1)
+                    ls = ['一个声音：还在还在，等你呢。','一个声音：好人一生平安。','一个声音：下一轮，快点，快点。']
+                    c = random.randint(0,2)
+                    print(ls[c])
+                if '预言家' in wan and wan[0] != '预言家':
+                    time.sleep(1)
+                    ys = ['另一个声音：我是人，但我在普度众生。','另一个声音：这世上本没有光，因为我的到来，所以有了光。','另一个声音：让我猜猜还有谁。']
+                    c = random.randint(0,2)
+                    print(ys[c])
+                if '女巫' in wan and wan[0] != '女巫':
+                    time.sleep(1)
+                    ns = ['又一个声音：你要死还是活，选一个。','又一个声音：我能复活一次，你呢？','又一个声音：谁又动了杀人的心思？']
+                    c = random.randint(0,2)
+                    print(ns[c])
+                if '猎人' in wan and wan[0] != '猎人':
+                    time.sleep(1)
+                    rs = ['冒出一声音：投我投我。','冒出一声音：我手里有个小王八，我从来也不急。','冒出一声音：别墨迹，我等着下地狱呢。']
+                    c = random.randint(0,2)
+                    print(rs[c])
+                if '平民' in wan and wan[0] != '平民' :
+                    time.sleep(1)
+                    ms = ['一声道：再等等，别急着投。','一声道：稍安勿躁，小心狼人。','一声道：白天与黑夜哪个更长些？']
+                    c = random.randint(0,2)
+                    print(ms[c])
+            k = 0
+            f = '玩家8'
+            lis = []
+            print('幸存玩家：',ren)
+            while k != 1:
+                k, w = 0, 0
+                tou = {'玩家1':0, '玩家2':0, '玩家3':0, '玩家4':0, '玩家5':0, '玩家6':0, '玩家7':0, '玩家8':0}
+                g = len(ren)
+                if '玩家1' not in ren:
+                    for i in range(1, g + 1):
+                        b = random.randint(0,g - 1)
+                        tou[ren[b]] = tou[ren[b]] + 1
+                    for i in range(0,7):
+                        if tou[jian[i]] > tou[f]:
+                            f = jian[i]
+                            w = i 
+                            k = 0
+                        elif tou[jian[i]] == tou[f] and tou[jian[i]] != 0 and jian[i] != f :
+                            print('>>>>>>>有多个玩家平票，重新投票。')
+                            k = 2
+                    if k != 2 :
+                        wan[w] = '0'
+                        ren.remove(jian[w])
+                        x = x + 1
+                        print(f'>>>>>>>玩家{w + 1}被票死')
+                        k = 1
+                if '玩家1' in ren:
+                    print('请输入所投玩家（例：玩家3）')
+                    b = input()
+                    tou[b] = tou[b] + 1
+                    for i in range(1, g):
+                        b = random.randint(0,g - 1)
+                        tou[ren[b]] = tou[ren[b]] + 1
+                    for i in range(0,7):
+                        if tou[jian[i]] > tou[f]:
+                            f = jian[i]
+                            w = i 
+                            k = 0
+                        elif tou[jian[i]] == tou[f] and tou[jian[i]] != 0 and jian[i] != f :
+                            print('>>>>>>>有多个玩家平票，重新投票。')
+                            k = 2
+                    if k != 2 :
+                        wan[w] = '0'
+                        ren.remove(jian[w])
+                        x = x + 1
+                        print(f'>>>>>>>玩家{w + 1}被票死')
+                        k = 1
+            print('投票结果：',tou)
+            print('幸存玩家：',ren)
+            v = x
+            if '平民' not in wan :
+                print('>>>>>>>游戏结束，狼人胜利!')
+                break
+            elif '狼人' not in wan :
+                print('>>>>>>>游戏结束，好人胜利!')
+                break
+            elif len(ren) == 2 and '狼人' in wan and '平民' not in wan:
+                print('>>>>>>>游戏结束，狼人胜利!')
+                break   
+
+ruchang()
+kaishi()
+'''

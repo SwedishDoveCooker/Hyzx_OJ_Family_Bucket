@@ -1,0 +1,74 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main(){
+	int a,b,c;
+	scanf("%d%d%d",&a,&b,&c);
+	for(int k=0;k<=2*(a+b);k++){
+		if(k<2*b) printf(".");
+		else if(k%2) printf("-");
+		else printf("+");
+	}
+	for(int i=1;i<=2*(c+b);i++){
+		if(i<2*b) printf("\n.");
+		else if(i%2) printf("\n|");
+		else printf("\n+");
+		for(int k=1;k<=2*(a+b);k++){
+			if(i%2){
+				if(i<=2*b-1){
+					if(k%2){
+						if(k<2*b-i) printf(".");
+						else if(k>2*a+2*b+2*c-i) printf(".");
+						else printf("/");
+					}
+					else{
+						if(k<=2*(a+b)-i) printf(".");
+						else if(k>2*a+2*b+2*c-i) printf(".");
+						else printf("|");
+					}
+				}
+				else{
+					if(k%2==0){
+						if(k>2*a+2*b+2*c-i) printf(".");
+						else printf("|");
+					}
+					else{
+						if(k<=2*(a+b)-2*b) printf(".");
+						else{
+							if(k>2*a+2*b+2*c-i) printf(".");
+							else printf("/");
+						}
+					}
+				}
+			}
+			else{
+				if(i<=2*b-1){
+					if(k%2==0){
+						if(k<2*b-i) printf(".");
+						else if(k>2*a+2*b+2*c-i) printf(".");
+						else printf("+");
+					}
+					else{
+						if(k<=2*(a+b)-i){
+							if(k<2*b-i) printf(".");
+							else printf("-");
+						}
+						else printf(".");
+					}
+				}
+				else{
+					if(k%2==0){
+						if(k>2*a+2*b+2*c-i) printf(".");
+						else printf("+");
+					}
+					else{
+						if(k<=2*(a+b)-2*b) printf("-");
+						else{
+							printf(".");
+						}
+					}
+				}
+			}
+		}
+	}
+}

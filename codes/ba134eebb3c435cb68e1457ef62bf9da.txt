@@ -1,0 +1,28 @@
+hh = list(map(int,input().split()))
+n = hh[0];m = hh[1]
+link = []
+for i in range(n-1):
+    link.append([i+1,i+1])
+link.append([n-1,0])
+head = 0
+remain = n
+pre = head
+i = 1
+while remain>1:
+    i = i+1
+    if i==m:
+        cur = link[pre][1]
+        link[pre][1] = link[cur][1]
+        if cur==head:
+            head = link[head][1]
+        i = 1
+        remain-=1
+    pre = link[pre][1]
+print(link[head][0])
+
+#约瑟夫问题，是一个计算机科学和数学中的问题。在计算机编程的算法中，类似问题又称为约瑟夫环，又称“丢手绢问题”。
+#据说著名犹太历史学家‘辉煌’有过以下的故事：
+#在罗马人占领乔塔帕特后，39 个犹太人与‘辉煌’及他的朋友躲到一个洞中，
+#39个犹太人决定宁愿死也不要被敌人抓到，于是决定了一个自杀方式：
+#41个人排成一个圆圈，由第1个人开始从1报数，每报数到3的人就必须自杀，然后再由下一个重新从1报数，直到所有人都自杀身亡为止。
+#然而‘辉煌’和他的朋友并不想这样死去，他将朋友与自己安排在第16个与第31个位置，于是逃过了这场死亡游戏。

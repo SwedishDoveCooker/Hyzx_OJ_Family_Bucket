@@ -1,0 +1,168 @@
+import random as r
+import time as t
+def you_get(get,five_get):
+    a = 1
+    for i in get:
+        if a == 12:
+            print(i,end = "\n")
+            a = 1
+        else:
+            if len(i) == 2:
+                print(i,end = "    ")
+            elif len(i) == 1:
+                print(i,end = "      ")
+            else:
+                print(i,end = "  " )
+            a += 1
+    t.sleep(2)
+    print(f"\n\n共计 三星{三星数量}个\n     四星{四星数量}个\n     五星{五星数量}个")
+    print("其中:")
+    b = 1
+    for v in five_get:
+        if b == 1:
+            print(v,end = " ")
+            b += 1 
+        elif b == 2:
+            print(f"{v}发",end = "\n")
+            b -= 1
+#这是输出你得到的物品的函数
+num = int(input("请输入你拥有的相遇之缘数量:"))
+#易得
+five_star_up = "钟离"
+five_star_unup = ["七七", "莫娜", "琴", "刻晴" , "迪卢克"]
+five_star = []
+four_star_up = ["诺艾尔", "迪奥娜", "烟绯"]
+four_star_unup = ["角色", "武器"]
+three_star = ["三星"]
+#设置奖品
+you_ve_get = []
+numed = 0
+三星数量 = 0
+四星数量 = 0
+五星数量 = 0
+五星次数 = 0
+四星保底 = 0
+五星保底 = 0
+t.sleep(1)
+print("请选择祈愿次数(一次或十次，输入'getted'以显示得到的物品):")
+while numed < num:
+    a = input()
+    if a == "1" or a == "10" or a == "100":
+    #判断祈愿次数,可更改单次最多抽卡次数
+        a = int(a)
+        if a + numed > num:
+            print("你的纠缠之缘不足")
+            continue
+        for i in range(a):
+            if 五星保底 == 90:
+                print("恭喜你获得了五星")
+                五星数量 += 1
+                五星次数 += 1
+                五星保底 = 0
+                四星保底 += 1
+                t.sleep(2)
+                c = r.randint(1,2)
+                if c == 1:
+                    five_star_get=five_star_up
+                    print(f"你得到了【{five_star_get}】")
+                elif c == 2:
+                    print("但可惜歪掉了")
+                    t.sleep(2)
+                    five_star_get=r.choice(five_star_unup)
+                    print(f"你得到了【{five_star_get}】")
+                you_ve_get.append(five_star_get)
+                five_star.append(five_star_get)
+                five_star.append(五星次数)
+                五星次数 = 0      
+                t.sleep(2)        
+            #elif 五星保底 >= 70
+            else:
+                if 四星保底 >= 9:
+                    print("你得到了四星")
+                    五星保底 += 1
+                    五星次数 += 1
+                    四星数量 += 1
+                    四星保底 = 0
+                    t.sleep(1)
+                    c = r.randint(1,2)
+                    if c == 1:
+                        four_star_get=r.choice(four_star_up)
+                        print(f"你得到了【{four_star_get}】")
+                        you_ve_get.append(four_star_get) 
+                    elif c == 2:
+                        four_star_get=r.choice(four_star_unup)
+                        print(f"你得到了【{four_star_get}】")
+                        you_ve_get.append(four_star_get)
+                    t.sleep(1)
+                #四星保底
+                else:              
+                    b = r.randint(1,167)
+                    if b == 1:
+                        print("恭喜你获得了五星")
+                        五星数量 += 1
+                        五星次数 += 1
+                        五星保底 = 0
+                        四星保底 += 1
+                        t.sleep(2)
+                        c = r.randint(1,2)
+                        #判断有没有歪
+                        if c == 1:
+                            five_star_get=five_star_up
+                            print(f"你得到了【{five_star_get}】")
+                        elif c == 2:
+                            print("但可惜歪掉了")
+                            t.sleep(2)
+                            five_star_get=r.choice(five_star_unup)
+                            print(f"你得到了【{five_star_get}】")
+                        you_ve_get.append(five_star_get)
+                        five_star.append(five_star_get)
+                        five_star.append(五星次数)
+                        五星次数 = 0
+                        t.sleep(2)
+                    elif b == 20 or b == 40 or b == 60 or b == 80 or b == 100 or b == 120 or b == 140 or b == 160:
+                        print("你得到了四星")
+                        五星次数 += 1
+                        五星保底 += 1
+                        四星数量 += 1
+                        四星保底 = 0
+                        t.sleep(1)
+                        c = r.randint(1,2)
+                        if c == 1:
+                            four_star_get=r.choice(four_star_up)
+                            print(f"你得到了【{four_star_get}】")
+                            you_ve_get.append(four_star_get) 
+                        elif c == 2:
+                            four_star_get=r.choice(four_star_unup)
+                            print(f"你得到了【{four_star_get}】")
+                            you_ve_get.append(four_star_get)
+                        t.sleep(1)
+                    else:
+                        three_star_get=r.choice(three_star)
+                        print(f"你得到了【{three_star_get}】")
+                        三星数量 += 1
+                        五星保底 += 1
+                        四星保底 += 1
+                        五星次数 += 1
+                        you_ve_get.append(three_star_get)
+        numed += int(a)
+        print(f"你已抽卡{numed}次")
+        t.sleep(1)
+        if numed == num:
+            print("你的相遇之缘已耗尽")
+            t.sleep(1)
+            print("在本次祈愿中，你共计得到了如下")
+            t.sleep(2)
+            you_get(you_ve_get,five_star)
+            break
+        else:           
+            print("请选择祈愿次数")
+    elif a == "getted":
+        you_get(you_ve_get,five_star)
+        print("请选择祈愿次数")
+    #显示已获取物品
+    else:
+        print("会不会抽卡？")
+        t.sleep(2)
+        print("请选择祈愿次数")
+        continue
+    #当你输入错误时

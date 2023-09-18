@@ -1,0 +1,350 @@
+import random as r
+import time as t
+import datetime as dt
+white=['芬', '香草', '翎羽', '玫兰莎','卡缇',
+       '米格鲁', '克洛丝', '炎熔', '芙蓉', '安赛尔',
+       '史都华德', '梓兰', '空爆', '月见夜', '斑点',
+       '泡普卡']#三星卡池
+purple=['夜烟', '远山', '杰西卡', '流星', '白雪',
+        '清道夫', '红豆', '杜宾', '缠丸', '霜叶',
+        '慕斯', '砾', '暗索', '末药', '调香师',
+        '角峰', '蛇屠箱', '古米', '深海色', '地灵',
+        '阿消', '猎蜂', '格雷伊', '苏苏洛', '桃金娘',
+        '红云', '梅', '安比尔', '宴', '刻刀',
+        '波登可', '卡达', '孑', '酸糖', '芳汀',
+        '泡泡', '杰克', '松果', '豆苗', '深靛']#四星卡池
+gold=['白面鹗', '凛冬', '德克萨斯', '芙兰卡', '拉普兰德',
+      '幽灵鲨', '蓝毒', '白金', '陨星', '天火',
+      '梅尔', '赫默', '华法琳', '临光','红',
+      '雷蛇','可颂', '普罗旺斯', '守林人', '崖心',
+      '初雪', '真理', '空', '狮蝎', '食铁兽',
+      '夜魔', '诗怀雅', '格劳克斯', '星极', '送葬人',
+      '槐琥', '苇草', '布洛卡', '灰喉', '吽',
+      '惊蛰', '慑砂', '巫恋', '极境', '石棉',
+      '月禾', '莱恩哈特', '断崖', '蜜蜡', '贾维',
+      '安哲拉', '燧石', '四月', '奥斯塔', '絮雨',
+      '卡夫卡', '爱丽丝', '乌有', '熔泉', '赤冬',
+      '绮良']#五星卡池
+rinbow=['能天使', '推进之王', '伊芙利特', '艾雅法拉', '安洁莉娜',
+        '闪灵', '夜莺', '星熊', '塞雷娅', '银灰',
+        '斯卡蒂', '陈', '黑', '赫拉格', '麦哲伦',
+        '莫斯提马', '煌', '阿', '刻俄柏', '风笛',
+        '傀影', '温蒂', '早露', '铃兰', '棘刺',
+        '森蚺', '史尔特尔', '瑕光', '泥岩', '山',
+        '空弦', '嵯峨', '异客', '凯尔希', '卡涅利安']#六星卡池
+q=['年', 'W', '迷迭香', '夕', '灰烬', '浊心斯卡蒂']#限定六星卡池
+q_=['霜华', '闪击']#限定五星卡池
+five=gold+q_#所有五星
+six=rinbow+q#所有六星
+hg=[]#已确定稀有度的卡池
+good=five+six#五星，六星
+p=len(purple)#四星总数
+g=len(gold)#五星总数
+rin=len(rinbow)#六星总数
+up_agent=[]#当期概率up干员
+today=dt.date.today()
+today=str(today)
+#初始化问候语
+#自定义问候
+greet=True
+if greet==True:
+    print("/  ▶  \\")
+    input("\START/")
+    print("正在释放神经递质……")
+    t.sleep(0.5)
+    name=input("请输入用户名：")
+    print("正在提交反馈至神经……")
+    t.sleep(0.5)
+    input("[开始唤醒]")
+    print("Arknights")
+    print("正在尝试与Rhodes Island™取得神经连接……")
+    t.sleep(2)
+    print("Welcome to ARKNIGHTS,Dr."+name)
+    t.sleep(1)
+    print()
+    print("Ocean 感谢你对明日方舟的支持！                     寻访凭证 查看")
+    print(" ★                                                *36888  删除")
+    print(" Cat  来自 钟祺翔"+"                "+today+" 退出程序后过期")
+    print()
+    t.sleep(1)
+
+
+#确认抽卡次数是否只为单抽或十连
+def check_number(x):
+    try:
+        x=int(x)
+        Flag=False
+        if x==1 or x==10:
+            pass
+        else:
+            print("会不会抽卡?")
+            Flag=True
+    except Exception:
+        print("会不会抽卡?")
+        t.sleep(1)
+        Flag=True
+    return x,Flag
+
+
+#确认干员名称是否规范
+def check_name(name,star):
+    name=name
+    Flag=False
+    if name!="":
+        if star==4:
+            if name not in purple:
+                print("该干员尚未进入本次卡池")
+                t.sleep(1)
+                Flag=True
+        if star==5:
+            if name not in five:
+                print("该干员尚未进入本次卡池")
+                t.sleep(1)
+                Flag=True
+        if star==6:
+            if name not in six:
+                print("该干员尚未进入本次卡池")
+                t.sleep(1)
+                Flag=True
+    else:
+        Flag=False
+    return Flag
+
+
+def get_normal():
+    global c
+    global num
+    if num>10:
+        c+=1
+    s=r.randint(1,50)
+    if s>=1 and s<=20:
+        s=3
+        card=r.choice(white)
+        hg.append((s,card))
+    elif s>20 and s<=45:
+        s=4
+        card=r.choice(purple)
+        hg.append((s,card))
+    elif s>45 and s<=49:
+        s=5
+        card=r.choice(gold)
+        hg.append((s,card))
+    else:
+        s=6
+        card=r.choice(rinbow)
+        hg.append((s,card))
+        c=0
+
+        
+#随机确定稀有度
+def get_samp():
+    global c
+    global num
+    if c>=50:
+        s=six_bottom()
+        if s==6:
+            card=r.choice(rinbow)
+            hg.append((s,card))
+            c=0
+        else:
+            get_normal()
+    else:
+        get_normal()
+            
+#六星包底
+def six_bottom():
+    global c
+    s=0
+    up=[]
+    #I hope I would never trigger this function
+    for i in range(1,c-48):
+        up.append(i)
+    k=r.randint(1,50)
+    if k in up:
+        s=6
+    return s
+
+
+#输出卡牌
+def out_samp():
+    global first
+    global num
+    global c
+    j=r.choice(hg)
+    (s,card)=j
+    if card=="up_4":
+        card=r.choice(pup)
+    elif card=="up_5":
+        card=r.choice(gup)
+    elif card=="up_6":
+        card=r.choice(rinup)
+    if num<=10:
+        if s==6:
+            c=0
+        else:
+            c+=1
+    if card in good:
+        first=False
+    #t.sleep(1)
+    for i in range(s-1):
+        print("★",end="")
+    print("★")
+    #t.sleep(1)
+    print(card)
+    hg.remove(j)
+
+
+    
+#首发十连保底
+def first_bottom():
+    Flag=False
+    for i in range(10):
+        get_samp()
+    for i in hg:
+        (s,card)=i
+        if card in good:
+            Flag=True
+            break
+    if Flag==False:
+        n=r.randint(0,9)
+        hg.pop(n)
+        bd=r.randint(1,5)
+        s=0
+        if bd==5:
+            bd=r.choice(rinbow)
+            s=6
+        else:
+            bd=r.choice(gold)
+            s=5
+        hg.insert(n,(s,bd))
+
+        
+#抽卡统计
+def info():
+    global num
+    global c
+    global jade
+    global rock
+    print("累计寻访次数:"+str(num))
+    print("折合使用的合成玉:"+str(jade)+"[源石:"+str(rock)+"]")
+    print("连续未寻访出6★干员次数:"+str(c))
+    print()
+    num=int(num)
+    jade=int(jade)
+    rock=int(rock)
+    c=int(c)
+
+up_yes=True
+if up_yes==True:
+    #四星干员概率up
+    star=4
+    Flag=True
+    while Flag==True:
+        p_up=input("请输入概率up的四星干员：")
+        p_up=p_up.split()
+        pup=[]#四星up列表
+        for i in p_up:
+            pup.append(i)
+        Flag=False
+        for i in pup:#确认加入干员为已有干员
+            Flag=check_name(i,star)
+    for i in range(int((p-5)/4)):#加入以提升概率
+        for j in pup:
+            purple.append("up_4")#加入关键字
+    for i in pup:
+        up_agent.append(i)#总计
+    #五星干员概率up
+    Flag=True
+    star=5
+    while Flag==True:
+        g_up=input("请输入概率up的五星干员：")
+        g_up=g_up.split()
+        gup=[]
+        for i in g_up:
+            gup.append(i)
+        Flag=False
+        for i in gup:
+            Flag=check_name(i,star)
+    for i in range(g):
+        for j in gup:
+            gold.append("up_5")
+    for i in gup:
+        up_agent.append(i)
+    #六星干员概率up
+    star=6
+    Flag=True
+    while Flag==True:
+        rin_up=input("请输入概率up的六星干员：")
+        rin_up=rin_up.split()
+        rinup=[]
+        for i in rin_up:
+            rinup.append(i)
+        Flag=False
+        for i in rinup:
+            Flag=check_name(i,star)
+    for i in range(rin):
+        for j in rinup:
+            rinbow.append("up_6")
+    for i in rinup:
+        up_agent.append(i)
+    #概率up统计
+    print("【",end=" ")
+    for i in up_agent:
+        print(i,end=" ")
+    print("】")
+    print("︽以上干员获得概率提升！！！")
+    t.sleep(1)
+    input("(前往寻访)")
+    print()
+
+
+
+#统计信息
+jade=0
+rock=0
+c=0
+num=0
+
+
+#初始变量
+first=True
+first_bottom()
+
+
+
+#主程序
+while "陈宇轩是废物":
+    try:
+        Flag=True
+        if first==True:
+            print(str(10-num)+"次内寻访必得5★以上干员")
+        while Flag==True:
+            x=input("请输入寻访次数:")
+            x,Flag=check_number(x)
+        print()
+        num+=x
+        jade=600*num
+        rock=jade//180+1
+        if hg==[]:
+            for i in range(x):
+                get_samp()
+                out_samp()
+        else:
+            try:
+                for i in range(x):
+                    m=x-i
+                    out_samp()
+            except IndexError:
+                for i in range(m):
+                    get_samp()
+                    out_samp()
+        t.sleep(1)
+        info()
+    except KeyboardInterrupt:
+        print("数据已重置!")
+        t.sleep(2)
+        print()
+        c=num=jade=rock=0
+        first=True
+        hg=[]
+        first_bottom()

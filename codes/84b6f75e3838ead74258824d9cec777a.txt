@@ -1,0 +1,58 @@
+rrr = float(input())
+sss = 3.14159 * pow(rrr,2)
+ccc = 3.14159 * rrr *2
+print(round(ccc,4),round(sss,4))
+"""
+ 
+  import random as a
+bb =[]
+peizi = 0
+bujian=["生之花","死之羽","时之沙","空之杯","理之冠"]
+fucitiaoo = ['生命值5.3%','生命值299','攻击力5.3%',"攻击力21",'暴击率3.9%','暴击伤害7.8%',
+             '防御力7.3%','防御力21','元素精通21','元素充能效率6.5%']
+zhucitiao1 = ['攻击力46.6%','防御力58.7%','元素精通187','生命值46.6%','元素充能效率51.7%']
+zhucitiao2 = ['攻击力46.6%','防御力58.7%','元素精通187','生命值46.6%','火元素伤害加成46.6%','草元素伤害加成46.6%',
+             '水元素伤害加成46.6%','风元素伤害加成46.6%','雷元素伤害加成46.6%','冰元素伤害加成46.6%','岩元素伤害加成46.6%','物理伤害加成58.7%']
+zhucitiao3 = ['攻击力46.6%','防御力58.7%','元素精通187','生命值46.6%','暴击率31.1%','暴击伤害62.2%','治疗加成31.1%']
+while True:
+    w=input("1.获取胚子  2.查看副词条   3.强化")
+    if w == "2" and peizi == 0:
+        print("你看泥马")       
+    elif w == "1":  
+        bj = a.randint(0,4)
+        peizi = bujian[bj]
+        bb.append(peizi)
+        peizi = 1
+        if bj == 2:
+            e = a.sample(zhucitiao1,1)
+            bb.append(e)
+        elif bj == 3:
+            e = a.sample(zhucitiao2,1)
+            bb.append(e)
+        elif bj == 4:
+            e = a.sample(zhucitiao3,1)
+            bb.append(e)
+        elif bj == 0:
+            bb.append("生命值4610")
+        elif bj == 1:
+            bb.append("攻击力311")
+        print(bb)
+    elif w == "2" and peizi != 0:
+        tui = a.randint(1,100)
+        tuishu=0
+        if 1<=tui<=75:
+            tuishu = 3
+        else :
+            tuishu = 4
+        if tuishu == 3:
+            c = a.sample(fucitiaoo,3)
+            bb.append(c)
+            print(bb)
+        if tuishu == 4:
+            c = a.sample(fucitiaoo,4)
+            bb.append(c)
+            print(bb)
+        bb=[]
+    elif w == "3" and peizi != 0 :
+        bb=[]
+ """

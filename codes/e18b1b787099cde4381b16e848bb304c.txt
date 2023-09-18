@@ -1,0 +1,173 @@
+import turtle
+
+t = turtle.Pen()
+w = turtle.Pen()
+a = turtle.Pen()
+b = turtle.Pen()
+
+t.hideturtle()
+w.hideturtle()
+a.hideturtle()
+b.hideturtle()
+
+
+t.pensize(2)
+t.speed(0)
+t.pencolor('blue')
+
+n = 180
+m = -150
+
+#左边
+while n!=0:
+    t.seth(n)        
+    t.circle(70,180)
+    t.begin_fill()
+    t.color('blue','yellow') 
+    t.circle(-70,180)
+    t.circle(-70,180)
+    t.end_fill()
+    t.penup()
+    t.goto(0,0)
+    t.pendown() 
+    n = n-30
+#右边
+while m!=30:
+    t.seth(m)        
+    t.circle(70,180)
+    t.begin_fill()
+    t.color('blue','yellow') 
+    t.circle(-70,180)
+    t.circle(-70,180)
+    t.end_fill()
+    t.penup()
+    t.goto(0,0)
+    t.pendown() 
+    m = m+30
+#字体
+t.penup()
+t.goto(-30,170)
+t.write('审',font=("Arial",50))
+
+t.goto(-130,135)
+t.write('核',font=("Arial",50))
+t.goto(70,135)
+t.write('核',font=("Arial",50))
+
+t.goto(-210,65)
+t.write('人',font=("Arial",50))
+t.goto(150,65)
+t.write('人',font=("Arial",50))
+
+t.goto(-240,-45)
+t.write('员',font=("Arial",50))
+t.goto(180,-45)
+t.write('员',font=("Arial",50))
+
+t.goto(-210,-145)
+t.write('真',font=("Arial",50))
+t.goto(150,-145)
+t.write('真',font=("Arial",50))
+
+t.goto(-130,-225)
+t.write('帅',font=("Arial",50))
+t.goto(70,-225)
+t.write('美',font=("Arial",50))
+
+#黑屏
+t.speed(10)
+t.goto(-800,-600)
+t.pendown()
+t.begin_fill()
+t.color('black','black')
+t.seth(0)
+t.fd(1600)
+t.left(90)
+t.fd(1200)
+t.left(90)
+t.fd(1600)
+t.left(90)
+t.fd(1200)
+t.end_fill()
+
+#各种杂七杂八
+t.penup()
+t.goto(0,0)
+t.speed(1)
+t.pencolor('white')
+t.write('什么',font=("Arial",60))
+t.fd(10)
+t.undo()
+t.undo()
+
+t.goto(-100,0) 
+t.write('你以为结束了',font=("Arial",60))
+t.fd(10)
+t.undo()
+t.undo()
+
+t.goto(-50,0) 
+t.write('好戏开',font=("Arial",60))
+t.fd(10)
+t.undo()
+t.undo()
+
+x = 5
+y = 20
+while x!=100:
+    t.write('场',font=("Arial",y))
+    t.fd(10)
+    t.undo()
+    t.undo()
+    x = x+5
+    y = y+5
+
+#最后一幕
+t.clear()
+t.speed(0)
+w.speed(0)
+w.penup()
+t.goto(-130,290)
+w.goto(-136,302)
+t.seth(0)
+w.seth(0)
+t.pendown()
+w.pendown()
+#八卦外圈
+w.begin_fill();t.begin_fill()
+w.color('tan4','tan4');t.color('tan1','tan1')
+pp = 8
+while pp!=0:
+    w.fd(282);t.fd(270)
+    w.right(45);t.right(45)
+    pp = pp-1
+w.end_fill()
+t.end_fill()
+
+#太极
+a.speed(10)
+b.speed(10)
+b.seth(-180)
+
+a.pensize(4);b.pensize(4)
+a.penup();b.penup()
+a.goto(0,180);b.goto(0, -220)
+a.pendown();b.pendown()
+a.color('black','black');b.color('white','white')
+
+a.begin_fill();b.begin_fill()
+a.circle(-100,-180);b.circle(-100,-180)
+a.circle(100,-180);b.circle(100,-180)
+a.circle(200,180);b.circle(200,180)
+a.end_fill();b.end_fill()
+
+a.penup();b.penup()
+a.pencolor('white');b.pencolor('black')
+a.goto(0,80);b.goto(0,-120)
+a.dot(100,'white');b.dot(100,'black')
+
+w.penup()
+w.goto(-250,325)
+w.write('掐指一算,明天你又能帅/美上不少',font=("Arial",30)) 
+
+turtle.exitonclick()

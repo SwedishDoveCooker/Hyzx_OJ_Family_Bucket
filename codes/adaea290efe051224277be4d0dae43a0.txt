@@ -1,0 +1,288 @@
+import turtle #打开turule库
+import math #打开math库
+import random as r #打开random库,命名为r
+numbers = turtle.textinput("WELCOME TO THE BIRTHDAY PARTY , DEAR .",'Write your birthday this blank and use the right form like "20050622", please .') #打开对话的
+turtle.setup(800,800)
+ag = turtle.Pen() #设置画笔，命名为ag
+ag.pensize(5) #设置画笔ag大小为5
+ag.speed(8000) #设置画笔ag速度为8000
+ag.hideturtle() #隐藏画笔ag图标
+ag.color('#8FBC8F','#AFEEEE') #设置画笔ag颜色为深海洋绿，填充颜色为苍白的绿宝石
+ag.penup() #提笔
+ag.goto(0,-370) #把笔移动到礼盒最低点（绘制起点）
+ag.pendown() #落笔
+ag.begin_fill() #开始填充
+ag.goto(0,0) #以下几行为用画笔ag绘制礼盒左面的画笔移动步骤（包括本行）
+ag.goto(-250,100) #见上
+ag.goto(-250,-270) #见上
+ag.goto(0,-370) #见上
+ag.end_fill() #完成填充
+ag.begin_fill() #开始填充
+ag.goto(250,-270) #以下几行为用画笔ag绘制礼盒右面的画笔移动步骤（包括本行）
+ag.goto(250,100) #见上
+ag.goto(0,0) #见上
+ag.end_fill() #完成填充
+qu = turtle.Pen() #设置画笔，命名为qu
+qu.pensize(5) #设置画笔qu大小为5
+qu.speed(8000) #设置画笔qu速度为8000
+qu.hideturtle() #隐藏画笔qu图标
+qu.color('#BDB76B','#F0E68C') #设置画笔qu颜色为深卡其布，填充颜色为卡其布
+qu.penup() #提笔
+qu.goto(-110,-326) #把笔移动到左侧丝带的绘制起点
+qu.pendown() #落笔
+qu.begin_fill() #开始填充
+qu.goto(-150,-310) #以下几行为用画笔qu绘制礼盒左侧丝带的画笔移动步骤（包括本行）
+qu.goto(-150,60) #见上
+qu.goto(-110,44) #见上
+qu.goto(-110,-326) #见上
+qu.end_fill() #完成填充
+qu.penup() #提笔
+qu.goto(110,-326) #把笔移动到右侧丝带的绘制起点
+qu.pendown() #落笔
+qu.begin_fill() #开始填充
+qu.goto(150,-310) #以下几行为用画笔qu绘制礼盒右侧丝带的画笔移动步骤（包括本行）
+qu.goto(150,60) #见上
+qu.goto(110,44) #见上
+qu.goto(110,-326) #见上
+qu.end_fill() #完成填充
+mn=turtle.Pen() #设置画笔，命名为mn
+mn.pensize(5) #设置画笔mn大小为5
+mn.speed(8000) #设置画笔mn速度为8000
+mn.hideturtle() #隐藏画笔mn图标
+mn.color('#8FBC8F','#AFEEEE') #设置画笔mn颜色为深海洋绿，填充颜色为苍白的绿宝石（同画笔ag）
+mn.penup() #提笔
+mn.goto(0,0) #把笔移动到盒盖底端（绘制起点）
+mn.pendown() #落笔
+mn.begin_fill() #开始填充
+mn.goto(270,108) #以下几行为用画笔mn绘制盒盖右侧面的画笔移动步骤（包括本行）
+mn.goto(270,158) #见上
+mn.goto(0,50) #见上
+mn.goto(0,0) #见上
+mn.end_fill() #完成填充
+mn.begin_fill() #开始填充
+mn.goto(-270,108) #以下几行在画盒盖左侧面（包括本行）
+mn.goto(-270,158) #见上
+mn.goto(0,50) #见上
+mn.end_fill() #完成填充
+mn.penup() #提笔
+mn.goto(-270,158) #以下几行在绘制盒盖顶面（本行是将笔移动到绘制起点）
+mn.pendown() #落笔
+mn.begin_fill() #见上
+mn.goto(0,266) #见上
+mn.goto(270,158) #见上
+mn.goto(0,50) #见上
+mn.end_fill() #见上
+mn.color('#BDB76B','#F0E68C') #改变mn的画笔颜色和填充颜色，使其和绘制丝带的画笔qu相同
+mn.penup() #提笔
+mn.goto(0,158) #把笔移动到盒盖中心
+mn.pendown() #落笔
+mn.begin_fill() #开始填充，画一个盒顶装饰
+for i in range(30): #利用循环和circle函数画曲线，数据是调试的。这个循环在绘制右侧大弧
+    x = 160-5*i #随着i的增大（循环次数的增多），半径x减小，但始终为正整数
+    mn.circle(x,10) #以x为半径，逆时针画一个10°的圆弧
+for i in range(20): #类似上述操作。这个循环在绘制右侧小弧
+    x = 200-8*i #见上
+    mn.circle(-x,5) #绘制小弧时，顺时针绘制
+mn.goto(0,158) #将笔移动到盒盖中心
+for i in range(30): #类似上述操作，绘制左侧大弧
+    x = 160-5*i #见上
+    mn.circle(-x,10) #为了对称，和右侧大弧反方向绘制
+for i in range(20): #类似上述操作，绘制左侧小弧
+    x = 200-8*i #见上
+    mn.circle(x,5) #为了对称，和右侧小弧反方向绘制
+mn.end_fill() #完成填充
+mn.penup() #提笔
+mn.goto(200,300) #移动到一个合适的位置
+mn.write('点击盒盖',font=('宋体',20)) #写出这行字，提示进行操作
+mn.goto(200,275) #换行
+mn.write('拆开礼盒',font=('宋体',20)) #写出这行字，提示进行操作
+turtle.listen() #监听屏幕，为了按空格键的信息能被接收到
+def gift1(x,y): #定义函数gift1
+    if -370 <= x <= 170 and 50 <= y <= 266: #如果鼠标点击在盒盖（大概位置）上，则发生以下事件
+        mn.clear() #画笔mn绘制的图形全部删除（清除盒盖）
+        ag.penup() #提笔
+        ag.goto(0,0) #移动画笔
+        ag.pendown() #落笔
+        ag.color('#8FBC8F','#778899') #设置画笔颜色为深海洋绿，填充颜色为浅石板灰
+        ag.begin_fill() #开始填充，以下为绘制盒子内部的操作
+        ag.goto(250,100) #见上
+        ag.goto(0,200) #见上
+        ag.goto(0,0) #见上
+        ag.goto(-250,100) #见上
+        ag.goto(0,200) #见上
+        ag.end_fill() #完成填充，画完了
+        ag.penup() #提笔
+        ag.goto(200,300) #移动到一个合适的位置
+        ag.write('按空格键',font=('宋体',20)) #写字，进行提示
+        ag.goto(200,275) #换行
+        ag.write('查看礼物',font=('宋体',20)) #写字，进行提示
+turtle.onscreenclick(gift1,1) #将gift1与鼠标点击联系起来，如果发生了鼠标点击，则执行gift1的内容（即打开盒盖）
+def gift2(): #定义函数gift2
+    ag.clear() #清除画笔ag绘制内容
+    qu.clear() #清除画笔qu绘制内容。这两步目的是把屏幕清空
+#生日祝词部分
+    t = turtle.Pen()#设置画笔，命名为t
+    t.pensize(5)#设置画笔大小为5
+    t.speed(8000)#设置画笔速度为8000
+    t.hideturtle()#隐藏画笔图标
+    t.penup()#提笔
+    t.color("#00CCDD")#设置颜色#00CCDD
+    t.goto(-380,220)#将画笔移动到（-380，220）
+    t.write("WELCOME TO THE BIRTHDAY PARTY , DEAR .",font=("MV Boli",25))#打出迎接词
+    t.goto(-380,185)#将画笔移动到（-380，185）
+    year = int(numbers[0]+numbers[1]+numbers[2]+numbers[3])#提出字符串中生日年份的部分
+    month = int(numbers[4]+numbers[5])#提出字符串中生日月份的部分
+    date = int(numbers[6]+numbers[7])#提出字符串中生日日期的部分
+    dic1 = { 1 , 3 , 5 , 7 , 8 , 10 , 12 }#将31天的月份编成字典1
+    dic2 = { 4 , 6 , 9 , 11 }#将30天的月份编成字典2
+    age = 2021 - year + 1#年龄就是此算式的结果
+    days = 0#设置一个为0的初始值
+    starszuo = 0#设置另一个为0的初始值
+    for yearr in range(year , 2022):#把出生之后的每一年都过一遍
+        if ( yearr % 4 == 0 and yearr % 100 != 0 ) or (yearr % 400 == 0):#如果此时的年份是闰年
+            days += 366#那么加上366天
+        else :#如果不是
+            days += 365#那么加上365天
+    age = "you are "+str(age)+" years old !"#设置字符串成为一句包含当前年龄的一句话
+    t.write(age,font=("MV Boli",20))#写出它www
+    t.goto(-380,160)#再往下移笔
+    days = str(days)+" days you have been this beautiful world !"#设置字符串成为包含出生日期的一句话
+    t.write(days,font=("MV Boli",20))#写出就好啦
+    for xingzuo in range(1 , month) :#那么我们来看看星座，每个月过一遍，计算生日在一年中是第几天
+        if xingzuo in dic1 :#如果是大月呢
+            starszuo += 31#就加上31
+        elif xingzuo in dic2 :#如果是小月呢
+            starszuo += 30#就加上30
+        elif xingzuo == 2 :#如果是2月呢
+            starszuo += 28#就姑且先算他是28天吧
+    xingzuo =int(starszuo + date)#那么就是这个日子出生的啦
+    if int(month)==2 and int(date)==29:#但是如果他是2月29出生的
+        xingzuo = "As Pisces people , you are shuttling among the crowds ."#那就是pisces people !
+    elif xingzuo >=21 and xingzuo <= 50 :#其余就是关于星座输出的部分，虽欲强聒，终必不蒙见察，请君自赏
+        xingzuo = "As Aquarius people , you are living above the ranbow ."
+    elif xingzuo >=51 and xingzuo <= 79 :
+        xingzuo = "As Pisces people , you are shuttling among the crowds ."
+    elif xingzuo >=80 and xingzuo <= 110 :
+        xingzuo = "As Aries people , you are outspoken and extrovert ."
+    elif xingzuo >=111 and xingzuo <= 141 :
+        xingzuo = "As Taurus people , you are solid and moderate ."
+    elif xingzuo >=142 and xingzuo <= 172 :
+        xingzuo = "As Gemini people , you may be variable ."
+    elif xingzuo >=173 and xingzuo <= 204 :
+        xingzuo = "As Cancer people , you are always under the moonlight shine ."
+    elif xingzuo >=205 and xingzuo <= 235 :
+        xingzuo = "As Leo people , you own the cocky confidence ."
+    elif xingzuo >=236 and xingzuo <= 266 :
+        xingzuo = "As Virgo people , you are so detail-oriented ."
+    elif xingzuo >=267 and xingzuo <= 296 :
+        xingzuo = "As Libra people , you prefer the implement of perfect ."
+    elif xingzuo >=297 and xingzuo <= 326 :
+        xingzuo = "As Scorpio people , you cool appearance of and passionate ."
+    elif xingzuo >=327 and xingzuo <= 356 :
+        xingzuo = "As Sagittarius people , you are sincere and straight ."
+    elif xingzuo >=357 or xingzuo <= 20 :
+        xingzuo = "As Capricorn people , you are mild and stubborn ."
+    t.goto(-380,140)#移笔，输出
+    t.write(xingzuo,font=("MV Boli",20))#输出句子
+#接下来是蛋糕部分喔
+    t.color('#DEB887','#FFEFD5')  #设置颜色，画笔的颜色是结实的树，填充色是番木花
+    rounds = 0#设置一个空参数
+    def ellipse (i,a):#内建函数ellispe,是画椭圆的，数学思想请参照数学选修一相关内容，注意此处的输入是横坐标和半长轴
+        y = abs(a **2 - i ** 2) / 4#abs是为了让绝对值可以被开根号。关于计算，虽然是手算的不过算对了呢
+        y=y ** 0.5 #计算机可以自己开根号，真是方便呢
+        return(i,y)#诞生了！输出的是横坐标和纵坐标哦
+    a = 250#设置好的半长轴
+    for times in range(1,4):#三次循环，请耐心等待哦
+        t.penup()#提笔
+        t.home()#画家
+        a=a - 50#每一次的椭圆长度大小相差是50
+        t.goto(-a,60*times-160)#去最左边的位置
+        t.pendown()#落笔
+        t.begin_fill()#准备开始涂色
+        for i in range(-a * 10,a * 10 + 1,40):#在半长轴正负十倍的范围内，步长为40地取横坐标
+            i = i / 10#再将横坐标除以十。此举意在得到间隔更小的横坐标取值，毕竟for语句里面step不能是float
+            xx , yy = ellipse(i , a)#输出的坐标值
+            t.goto(xx,yy+60*times-160)#移动。里面关于纵坐标的计算内容是对于椭圆在画布的纵向位置上的平移
+        for i in range(a * 10,-a * 10-1,-40):#在半长轴正负十倍的范围内，步长为40地，从右往左取横坐标
+            i = i / 10#再将横坐标除以十。此举意在得到间隔更小的横坐标取值，毕竟for语句里面step不能是float
+            xx , yy = ellipse(i , a)#输出的坐标值
+            t.goto(xx,-yy+60*times-160)#移动。纵坐标的负值是为了画下面半个椭圆。里面关于纵坐标的计算内容是对于椭圆在画布的纵向位置上的平移
+        t.end_fill()#停止填充
+        t.begin_fill()#又开始了填充
+        t.goto(-a,60*times-100)#换一个地方，是在画蛋糕的身体即圆柱的侧面部分
+        t.penup()#提笔
+        t.goto(a,60*times-100)#换一个地方，是在画蛋糕的身体即圆柱的侧面部分
+        t.pendown()#提笔
+        t.goto(a,60*times-160)#换一个地方，是在画蛋糕的身体即圆柱的侧面部分
+        t.end_fill()#停止填充
+        t.penup()#提笔
+        t.goto(-a,60*times-100)#换一个地方，是在画蛋糕的身体即圆柱的侧面部分
+        t.pendown()#落笔
+        t.begin_fill()#开始填充
+        for i in range(-a * 10,a * 10 + 1,40):#在半长轴正负十倍的范围内，步长为40地取横坐标
+            i = i / 10#再将横坐标除以十。此举意在得到间隔更小的横坐标取值，毕竟for语句里面step不能是float
+            rounds += 1#计数君上线！是一定长度之内的关系
+            x , y = ellipse(i , a)#输出的坐标值
+            t.goto(x,y+60*times-100)#移动。里面关于纵坐标的计算内容是对于椭圆在画布的纵向位置上的平移
+            while rounds == 18 :#如果计数到达单位18
+                t.penup()#提笔
+                t.pencolor('#FF7F50')  #换画笔的颜色是珊瑚
+                t.pensize(15)#调节画笔大小是15
+                t.setheading(-90)#设置画笔朝向是-90度
+                t.forward(15)#前进15
+                t.pendown()#落笔
+                t.circle(2)#画⚪，半径是2
+                t.penup()#提笔
+                t.setheading(90)#设置画笔朝向是90度
+                t.forward(15)#前进15，即回到原位
+                t.pendown()#落笔
+                t.color('#DEB887','#FFEFD5')#设置画笔颜色变回刚才蛋糕的颜色
+                t.pensize(5)#设置画笔大小回到原来的5
+                rounds = 0#计数清零
+        for i in range(a * 10,-a * 10-1,-40):#在半长轴正负十倍的范围内，步长为40地取横坐标（打注释真的好累……
+            i = i / 10#再将横坐标除以十。此举意在得到间隔更小的横坐标取值，毕竟for语句里面step不能是float
+            rounds += 1#计数君再次上线！是一定长度之内的关系
+            x , y = ellipse(i , a)#输出的坐标值
+            t.goto(x,-y+60*times-100)#移动。纵坐标的负值是为了画下面半个椭圆。里面关于纵坐标的计算内容是对于椭圆在画布的纵向位置上的平移
+            while rounds == 18 :#如果计数到达单位18
+                t.penup()#提笔
+                t.pencolor('#FF7F50')  #换画笔的颜色是珊瑚
+                t.pensize(15)#调节画笔大小是15
+                t.setheading(90)#设置画笔朝向是90度
+                t.forward(15)#前进15
+                t.pendown()#落笔
+                t.circle(2)#画⚪，半径是2
+                t.penup()#提笔
+                t.setheading(-90)#设置画笔朝向是-90度
+                t.forward(15)#前进15，即回到原位
+                t.pendown()#落笔
+                t.color('#DEB887','#FFEFD5')#设置画笔颜色变回刚才蛋糕的颜色
+                t.pensize(5)#设置画笔大小回到原来的5
+                rounds = 0#计数清零
+        t.end_fill()#停止填充
+#画小花和小多边形！
+    t.speed(1000)  #设置画笔速度
+    for i in range(200):  #执行200次循环，绘制200个小花
+        t.penup()  #提起画笔
+        t.pensize(5)  #画笔粗细
+        t.pencolor("pink")  #设置画笔颜色为粉色
+        t.goto(r.randrange(-500,500),r.randrange(-500,500))  #将画笔移动到随机位置
+        t.pendown()  #放下画笔
+        t.setheading(r.randrange(0,180))  #随机设置小花的角度（设置画笔起始朝向）
+        for i in range(5):  #执行5次循环，绘制小花
+            t.forward(12)  #绘制线条
+            t.left(216)  #旋转
+        t.penup()#提笔
+        dazi = r.randrange(-800,800)#随机数横坐标
+        haolei = r.randrange(-800,800) #随机数纵坐标
+        t.goto(dazi,haolei)#移动到这个随机的位置
+        t.pendown()#落笔
+        t.color('#00CCDD','#00CCDD')  #设置填充颜色为#00CCDD
+        n = r.randrange(5,12)  #产生[5,12]的随机数
+        m = r.randrange(8,12)#随即设置多边形对角线长度
+        t.begin_fill()  #开始填充
+        for x in range(n):  #执行n次循环
+            t.forward(m)#前进m
+            t.left(abs(360-720/n))#旋转角度，是数学运算得出的，初二学过
+        t.end_fill()#停止填充
+turtle.onkey(gift2,'space')#将gift2与空格键联系起来。如果按下空格键，就会执行gift2的内容（从祝福语到小花）

@@ -1,0 +1,75 @@
+list1 = []
+a = input()
+list1.append(a)
+b = len(a)
+c = b%4
+while c!=4:
+    list1.append('0')
+    c = c+1
+list1.reverse()
+del list1[-1]
+for i in a:
+    list1.append(i)
+d = len(list1)
+e = d//4
+f = 0
+g = 4
+list2 = []
+while e!=0:
+    h = list1[f:g]
+    h = "".join(h)
+    list2.append(h)
+    f = f+4
+    g = g+4
+    e = e-1
+DSJ = len(list2)
+WXHN = 0
+WWW = ''
+while DSJ!=WXHN:
+    Z = list2[WXHN]
+    if Z == '0000':
+        WWW = WWW+'0'
+    if Z == '0001':
+        WWW = WWW+'1'
+    if Z == '0010':
+        WWW = WWW+'2'
+    if Z == '0011':
+        WWW = WWW+'3'
+    if Z == '0100':
+        WWW = WWW+'4'
+    if Z == '0101':
+        WWW = WWW+'5'
+    if Z == '0110':
+        WWW = WWW+'6'
+    if Z == '0111':
+        WWW = WWW+'7'
+    if Z == '1000':
+        WWW = WWW+'8'
+    if Z == '1001':
+        WWW = WWW+'9'
+    if Z == '1010':
+        WWW = WWW+'A'
+    if Z == '1011':
+        WWW = WWW+'B'
+    if Z == '1100':
+        WWW = WWW+'C'
+    if Z == '1101':
+        WWW = WWW+'D'
+    if Z == '1110':
+        WWW = WWW+'E'
+    if Z == '1111':
+        WWW = WWW+'F'
+    WXHN = WXHN+1
+
+print(WWW)
+'''
+        *   *   *   *    
+       *     * *     *     
+      *  ★   *  ★   *    
+       *      ★     *     
+>>>------I love you!   ---->
+         *         *      
+           *  ★ *       
+            *   *          
+             * *          
+              *         '''

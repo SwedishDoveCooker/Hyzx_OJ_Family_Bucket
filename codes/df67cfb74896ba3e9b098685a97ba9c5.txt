@@ -1,0 +1,126 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+int ans[1000005];int ansss=0;
+char anss[1000005];char anssss[1000005];
+int a[1000005];int n,l,r;
+struct node{
+    int s,e,num;
+}nizhidaoyouduoshaoshuzima[1000005];
+bool check(){
+    int p=1;
+    for(int i=1;i<=n;i++){
+        if(ans[i]!=ans[2*n-i+1]){
+            p=0;break;
+        }
+    }
+    return p;
+}
+void dfs(int idx,int lorr,int wojianleduoshaoci){
+    if(wojianleduoshaoci>=12345){
+        return;
+    }
+    if(idx==2*n+1){
+        if(!ansss&&check()){
+            ansss=1;
+            for(int i=1;i<=n*2;i++){
+                anssss[i]=anss[i];
+            }
+        }
+        // if(n==3){
+        // for(int i=1;i<=n*2;i++){
+        //     cout<<ans[i];
+        //     }cout<<endl;}
+        return;
+    }else {//cout<<"?"<<" ";
+        if(idx>=3){for(int i=1;i<=idx;i++){
+            nizhidaoyouduoshaoshuzima[ans[i]].num++;
+            if(nizhidaoyouduoshaoshuzima[ans[i]].num==1){
+                nizhidaoyouduoshaoshuzima[ans[i]].s=i;
+            }
+            else{
+                nizhidaoyouduoshaoshuzima[ans[i]].e=i;
+                for(int j=nizhidaoyouduoshaoshuzima[ans[i]].s+1;j<nizhidaoyouduoshaoshuzima[ans[i]].e;j++){
+                    if(nizhidaoyouduoshaoshuzima[ans[j]].num==1){
+                        for(int i=1;i<=n;i++){
+                            // for(int i=1;i<=idx;i++){
+                            //     cout<<ans[i];
+                            //     }
+                            nizhidaoyouduoshaoshuzima[a[i]].e=0;
+                            nizhidaoyouduoshaoshuzima[a[i]].s=0;
+                            nizhidaoyouduoshaoshuzima[a[i]].num=0;
+                            return;
+                        }
+                    }
+                }
+            }
+        }}
+    }
+    if(idx==0){
+        dfs(1,0,1);
+        dfs(1,1,1);
+    }
+    else if(idx&&lorr==0){
+        anss[idx]='L';
+        ans[idx]=a[l];
+        l++;
+        dfs(idx+1,0,wojianleduoshaoci+1);
+        dfs(idx+1,1,wojianleduoshaoci+1);
+        l--;
+    }
+    else if(idx&&lorr==1){
+        ans[idx]=a[r];r--;
+        anss[idx]='R';
+        dfs(idx+1,0,wojianleduoshaoci+1);
+        dfs(idx+1,1,wojianleduoshaoci+1);
+        r++;
+    }
+    // else if(idx>n){
+    //     if(a[l]==ans[2*n-idx]){
+    //         ans[idx]=a[l];
+    //         l++;
+    //         anss[idx]='L';
+    //         dfs(idx+1,0);
+    //         l--;
+    //     }
+    //     else if(a[r]==ans[2*n-idx]){
+    //         ans[idx]=a[r];
+    //         r--;
+    //         anss[idx]='R';
+    //         dfs(idx+1,0);
+    //         r++;
+    //     }
+    //     else return;
+    // }
+    // if(idx==n){
+    //     for(int i=1;i<=idx;i++){
+    //                             cout<<ans[i];
+    //                             }
+    // }
+}
+int main()
+{
+    cin.tie(0)->ios::sync_with_stdio(0),cout.tie(0);
+    int T;cin>>T;
+    while(T--){
+        cin>>n;l=1,r=2*n;
+        for(int i=1;i<=2*n;i++){
+            cin>>a[i];
+        }
+        dfs(0,0,0);
+        if(!ansss)cout<<"-1"<<endl;
+        else{for(int i=1;i<=2*n;i++){
+            cout<<anssss[i];
+        }
+        cout<<endl;
+        }
+        
+        memset(ans,0, sizeof ans);
+        memset(a,0, sizeof a);
+        ansss=0;
+    }
+  
+  //s b c c f
+}

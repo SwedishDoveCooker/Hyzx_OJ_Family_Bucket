@@ -1,0 +1,116 @@
+rrr = float(input())
+sss = 3.14159 * pow(rrr,2)
+ccc = 3.14159 * rrr *2
+print(round(ccc,4),round(sss,4))
+"""
+  sanxing = ["★★★冷刃","★★★黑缨枪","★★★黎明神剑","★★★以理服人",
+           "★★★弹弓","★★★魔导绪论", "★★★讨龙英杰潭","★★★沐浴龙血的剑",
+           "★★★神射手之誓","★★★鸦羽弓","★★★翡玉法球","★★★甲级宝珏",
+           "★★★飞天御剑","★★★异世界行记","★★★阔影铁剑"]
+sixing = ["★★★★安柏","★★★★凯亚","★★★★丽莎","★★★★迪奥娜",
+          "★★★★芭芭拉","★★★★罗莎莉亚","★★★★砂糖","★★★★雷泽",
+          "★★★★班尼特","★★★★菲谢尔","★★★★香菱","★★★★行秋",
+          "★★★★重云","★★★★辛焱","★★★★北斗","★★★★云堇",
+          "★★★★烟绯","★★★★凝光","★★★★五郎", "★★★★九条裟罗",
+          "★★★★早柚","★★★★托马","★★★★祭礼大剑","★★★★祭礼剑",
+          "★★★★祭礼弓","★★★★祭礼残章","★★★★昭心","★★★★西风长枪",
+          "★★★★西风剑","★★★★西风大剑","★★★★西风秘典","★★★★笛剑",
+          "★★★★钟剑","★★★★流浪乐章","★★★★绝弦",]
+wuxing = ["★★★★★和璞鸢","★★★★★狼的末路","★★★★★阿莫斯之弓","★★★★★风鹰剑",
+          "★★★★★天空之刃","★★★★★天空之脊","★★★★★天空之卷","★★★★★天空之傲",
+          "★★★★★天空之翼","★★★★★四风原典"]
+sixingup = ["★★★★钟剑","★★★★西风长枪","★★★★西风剑","★★★★西风秘典","★★★★西风猎弓"] #自己看着办
+wuxingup = ["★★★★★猎人之径","★★★★★贯虹之槊"] #自己看着办
+jin = []
+print("本期五星up:",wuxingup)
+print("本期四星up:",sixingup)
+dinggui =int(input("定轨武器：0:★★★★★猎人之径,1:★★★★★贯虹之槊"))
+print("当前定轨:",wuxingup[dinggui])
+feidinggui = 0
+if dinggui == 0:
+    feidinggui = 1
+import random as a
+dgz = 0
+sixingbaodi = False
+dgz = 0
+c = 0
+d = 1
+ys = 0
+wx1 = 6
+sx0 = 7
+sx1 = 61
+sx11 = 62
+chuhuo = 0
+zhongchou = 0
+zhongchous = 0
+while True:
+     ysd = int(input("你得到的原石:"))
+     ys = ys + ysd
+     jczy = ys // 160
+     zhongchous = zhongchous + jczy
+     ys = ys - jczy * 160
+     if jczy == 0:
+         print("就这还想碰武器池？")
+     while jczy > 0:
+         b = a.randint(1,1000)
+         if 1<= b <= wx1 or d==80:
+             e = a.randint(0,40)
+             if 10 <= e <= 40 or dgz ==2:
+                 if dgz == 2:
+                      print(wuxingup[dinggui])
+                      jin.append(wuxingup[dinggui])
+                      jin.append(d)
+                      dgz = 0 
+                 elif dgz <2:
+                     wqwbw = a.randint(0,1)
+                     if wqwbw == 0:
+                         print(wuxingup[dinggui])
+                         jin.append(wuxingup[dinggui])
+                         jin.append(d)
+                         dgz = 0
+                     if wqwbw == 1:
+                         print(wuxingup[feidinggui])
+                         jin.append(wuxingup[feidinggui])
+                         jin.append(d)
+                         dgz  = dgz + 1
+             elif 0<=e<=9:
+                 print(wuxing[e])
+                 jin.append(wuxing[e])
+                 jin.append(d)
+                 dgz = dgz + 1
+             zhongchou = zhongchous - jczy + 1
+             chuhuo = chuhuo + 1
+             print("第",d,"发出货，平均出货第",int(zhongchou/chuhuo),"发，当前定轨值",dgz)
+             print("当前详情",jin)
+             d = 1
+             c += 1
+             jczy-=1
+             wx1 = 6
+             sx0 = 7
+             sx1 = 71
+             sx11 = 72
+         elif sx0<= b<= sx1 or c==9:
+             g = a.randint(0,70)
+             if 35 <= g <= 70 or sixingbaodi == True:
+                 sx = a.randint(0,4)
+                 print(sixingup[sx])
+                 sixingbaodi = False
+             elif 0 <= g <= 34:
+                 print(sixing[g])
+                 sixingbaodi = True
+             c = 0
+             d+=1
+             jczy-=1
+         elif sx11 <= b <= 1000:
+             ss = a.randint(0,14)
+             print(sanxing[ss])
+             d+=1
+             c+=1
+             jczy -= 1
+         if d >= 62:
+             wx1 = wx1 + (d-62)*8
+             sx0 = wx1 +1
+             sx1 = sx0 + (d-62)*16
+             sx11 = sx1 + 1
+#2022/8/25 ———— 3.0
+"""''

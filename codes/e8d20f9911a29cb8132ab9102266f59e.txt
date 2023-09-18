@@ -1,0 +1,125 @@
+#已更新第1周（没有题目）
+#来源为高三三班技术"每日一题"
+#基础面板
+broad1 = ['血量','等级','攻击力','理智值','智慧','自由']
+broad2 = [50, 1, 5, 50, 0, 0]
+hpm = expm = 50; exp = 0; levm = 100
+bag = []
+skill = []
+def judge(ans, giv):
+    if ans not in giv or len(ans) > 1:
+        return False
+    else:
+        return True
+def breaktime():
+    global bag, skill, broad1, broad2
+    print('*现在是休息时间，在继续旅程前需要休整一下吗？')
+    print('   A.是     B.否')
+    ans = input('你的回答：')
+    while not judge(ans, 'AB'):
+        print('*该信息无法识别，请重新输入')
+        ans = input('你的回答：')
+    if ans == 'A':
+        print('*要查看什么吗？')
+        print('  A.查看背包  B.查看技能  C.查看面板  D.只想睡一觉  E.不用了，出发吧')
+        ans = input('你的回答：')
+        while ans != 'E':
+            if ans == 'A':
+                if bag != []:
+                    for i in bag:
+                        for j in i:
+                            print(j)
+                else:
+                    print('*你的背包内空无一物……')
+            elif ans == 'B':
+                if skill != []:
+                    for i in skill:
+                        for j in i:
+                            print(j)
+                else:
+                    print('*你尚未习得技能……')
+            elif ans == 'C':
+                for i in range(len(broad1)):
+                    print(broad1[i] + ':' + str(broad2[i]))
+            elif ans == 'D':
+                print('*你感觉到你的状态变好了')
+                if broad2[0] < hpm:
+                    print('* hp 恢复了')
+                    broad2[0] = hpm
+                if broad2[3] < 50:
+                    broad2[3] += 1
+                    print('*你感觉你的神志更加清醒了')
+                    print('* san值 恢复了！')
+                break
+            else:
+                print('*该信息无法识别，请重新输入')
+            print('*要查看什么吗？')
+            print('  A.查看背包  B.查看技能  C.查看面板  D.只想睡一觉  E.不用了，出发吧')
+            ans = input('你的回答：')
+    print('领路人:看起来你踌躇满志呢。那就出发吧。')
+def levup(n):
+    global broad2, hpm, expm, levm, exp
+    exp += n
+    if broad2[1] < levm:
+        while exp >= expm and broad2[1] < levm:
+            exp -= expm
+            expm += 10
+            broad2[1] += 1
+            hpm += 15
+            broad2[0] = hpm
+            broad2[2] += 1
+            print('*你的等级提升至' + str(broad2[1]))
+print('*你一觉醒来，发现自己到了一个全然陌生的地方')
+print('*……是异世界没错，但是没有超能力')
+print('*你听见一个清脆的，开关闭合的声音——从你的手腕处传来。原来你腕上不知何时多了一个手环，此时竟投出了全息投影')
+print('???:你好，来自异世的旅者。')
+print('???:我是你的[领路人]，不论你来到这里的目的为何，你都要通过我的考验。')
+print('*屏幕上闪出了一道似曾相识的通用题目')
+print('   下列电子元器件中，引脚最少的是:')
+print('   A.非门  B.或非门  C.可变电阻  D.钝角')
+print('   E.为什么异世界还有技术题啊？！')
+ans = input('你的回答:')
+n = 0
+while not judge(ans, 'ABCDE') and n < 3:
+    print('领路人:……请认真答题。')
+    ans = input('你的回答:')
+    n += 1
+if n < 3:
+    if ans == 'C':
+        print('领路人:不愧是旅者，轻易解决了这道题目。那你一定也有力量……不，没什么。')
+        broad2[4] += 1
+        levup(15)
+    elif ans == 'D':
+        print('领路人:真是创意的回答，旅者，你总有令我意外的能力。')
+        broad2[5] += 1
+        levup(10)
+    elif ans == 'E':
+        print('领路人:……')
+        print('领路人:(笑)为什么异世界不能有技术题呢？在这里，得到越高的“正确率”，你就会越强。这样吧，你看这些书了解一下。')
+        print('*习得了 通用必修一，必修二和选修一')
+        print('*……但好像并没有什么用。')
+        levup(5)
+    elif ans in 'AB':
+        print('领路人:想想他们的实物图，不要拘泥于图像。')
+        print('领路人:很可惜你答错了，但是不重要，跳过。')
+        
+else:
+    print('领路人:(笑)你可真会讨我开心。')
+    print('*你的 hp 降低了')
+    broad2[0] -= 1
+print('领路人:那么现在，旅者，稍作歇息，旅程就可以开始了。当然，现在可以烹饪甜甜花酿鸡或者痛痛快快地上个厕所。')
+print('第0周  结束')
+breaktime()
+
+print('第1周')
+print('*你，异世界的旅者，在旅途中遇到了头上有一撮红毛的漂泊者')
+print('漂泊者:春还是像过去那样有威压吗？')
+print('漂泊者:……')
+print('漂泊者:什么？！你居然不认识春？好吧，那么，我只能向你展示一下，我的友人曾在春那里领教过的——“无想的闪电式”了。你可要看好了。')
+print('*你只来得及看清那是两道三视图题目，便听到空中传来一声“太慢了！”然后便有一些清晰的图像浮现在眼前。（等这个程序足够高级的时候，你可能就看得到了，但是画图是不可能的，绝对不会做的，就是这样。）')
+print('*两道三视图题目2分钟该做完了，但闪电式只需要6秒')
+print('*习得技能  傻眼法')
+levup(20)
+skill.append(['技能名：傻眼法', '   持续施放3秒钟后将解出一道通用补线题，冷却时间为3周（似乎没什么用到的机会）', '   [春曾试着将“瞪眼法”授予黄中学子，然而悟性不足的黄中学子只习得了“傻眼法”]'])
+print('第1周  结束')
+breaktime()

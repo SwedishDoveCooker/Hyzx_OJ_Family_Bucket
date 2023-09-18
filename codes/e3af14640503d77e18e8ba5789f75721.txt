@@ -1,0 +1,47 @@
+d=input()
+n=int(input())
+a=[]
+b=[]
+c=[]
+m=0
+for i in range(20,-1,-1):
+    for k in range(1,(100-5*i)//3):
+        for j in range(1,(100-5*i-2*k)*3):
+            if i+k+j==100 and 5*i+3*k+j/3==100:
+                a.append(i)
+                b.append(k)
+                c.append(j)
+if n>=4:
+    x=4
+else:
+    x=n
+if d[0]=="A" and d[1]=="B":
+    for i in range(0,x):
+        print(a[i],end=" ") 
+        print(b[i],end=" ")
+        print(c[i])
+elif d[0]=="A" and d[1]=="C":
+    for i in range(0,x):
+        print(a[i],end=" ") 
+        print(c[i],end=" ")
+        print(b[i])
+elif d[0]=="B" and d[1]=="A":
+    for i in range(m-1,m-1-x,-1):
+        print(b[i],end=" ") 
+        print(a[i],end=" ")
+        print(c[i])
+elif d[0]=="B" and d[1]=="C":
+    for i in range(m-1,m-1-x,-1):
+        print(b[i],end=" ") 
+        print(c[i],end=" ")
+        print(a[i])
+elif d[0]=="C" and d[1]=="B":
+     for i in range(0,x):
+        print(c[i],end=" ") 
+        print(b[i],end=" ")
+        print(a[i])
+else:
+    for i in range(0,x):
+        print(c[i],end=" ") 
+        print(a[i],end=" ")
+        print(b[i])

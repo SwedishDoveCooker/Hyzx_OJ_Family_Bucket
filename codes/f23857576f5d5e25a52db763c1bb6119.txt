@@ -1,0 +1,53 @@
+#這是黃某扔群裡的題
+m = []
+#二維列表 形成棋盤 坐標為(0,0)到(9,9)
+for i in range(10):                            
+    n = list(map(int,input().split()))        
+    m.append(n)
+#行列轉換成坐標
+hh = list(map(int,input().split()))
+hh[0] = hh[0]-1;hh[1] = hh[1]-1               
+#落子
+if m[hh[0]][hh[1]]==0:
+    m[hh[0]][hh[1]] = hh[2]
+    wooc = True
+else:
+    print('Error')
+    wooc = False
+#判斷勝利
+wc = False
+y = hh[0]
+x = hh[1]
+#橫著的
+if x+4<=9:
+    if m[y][x]==m[y][x+1]==m[y][x+2]==m[y][x+3]==m[y][x+4]==hh[2]:
+        wc = True
+if x-4>=0:
+    if m[y][x]==m[y][x-1]==m[y][x-2]==m[y][x-3]==m[y][x-4]==hh[2]:
+        wc = True
+#豎著的
+if y+4<=9:
+    if m[y][x]==m[y+1][x]==m[y+2][x]==m[y+3][x]==m[y+4][x]==hh[2]:
+        wc = True
+if y-4>=0:
+    if m[y][x]==m[y-1][x]==m[y-2][x]==m[y-3][x]==m[y-4][x]==hh[2]:
+        wc = True
+#斜著的 
+if x+4<=9 and y+4<=9:
+    if m[y][x]==m[y+1][x+1]==m[y+2][x+2]==m[y+3][x+3]==m[y+4][x+4]==hh[2]:
+        wc = True
+if x-4<=0 and y-4<=0:
+    if m[y][x]==m[y-1][x-1]==m[y-2][x-2]==m[y-3][x-3]==m[y-4][x-4]==hh[2]:
+        wc = True
+if x-4<=9 and y+4<=9:
+    if m[y][x]==m[y+1][x-1]==m[y+2][x-2]==m[y+3][x-3]==m[y+4][x-4]==hh[2]:
+        wc = True
+if x+4<=9 and y-4<=9:
+    if m[y][x]==m[y-1][x+1]==m[y-2][x+2]==m[y-3][x+3]==m[y-4][x+4]==hh[2]:
+        wc = True
+#輸出
+if wooc:
+    if wc:
+        print('Yes')
+    else:
+        print('No')

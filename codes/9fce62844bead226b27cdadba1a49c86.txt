@@ -1,0 +1,59 @@
+import random
+x = int(input())
+y = ['山*', '森蚺*', '煌*','银灰*','陈*','斯卡蒂*','赫拉格*','史尔特尔*','棘刺*','夜莺*','闪灵*','塞雷娅*','泥岩*','星熊*','暇光*','傀影*','阿*','能天使*','推进之王*','伊芙利特*','艾雅法拉*','安洁莉娜*','黑*','麦哲伦*','莫斯提马*','刻俄柏*','风笛*','温蒂*','早露*','铃兰*','空弦*','嵯峨*']
+m = 2
+n = 0
+c = 0
+d = 0
+e = 0
+f = 0
+g = 0
+h = 0
+j = 0
+k = 0
+for i in range(x):
+    a = random.random()
+    if n>50:
+        m += (n-50)*2
+    if a<m*0.01:
+        n = 0
+        m = 2
+        b = random.random()
+        if b<0.35:
+            c+=1
+            print('凯尔希')
+        elif b<0.7:
+            d+=1
+            print('浊心斯卡蒂')
+        elif b<0.75:
+            e+=1
+            print('W')
+        else:
+            f+=1
+            print(random.choice(y))
+    elif a<((100-m)*8/98+m)*0.01:
+        n += 1
+        b = random.random()
+        if b<0.5:
+            g+=1
+            print('赤冬')
+        else:
+            h+=1
+            print('五星')
+    elif a<((100-m)*58/98+m)*0.01:
+        n+=1
+        j+=1
+        print('四星')
+    else:
+        n+=1
+        k+=1
+        print('三星')
+print( )
+print('凯尔希',c)
+print('浊心斯卡蒂',d)
+print('W',e)
+print('歪',f)
+print('赤冬',g)
+print('五星',h)
+print('四星',j)
+print('三星',k)

@@ -1,0 +1,45 @@
+x,n=map(int,input().split())
+if x==1 and 1<=n%7<=5:
+    print((n//7*5+n%7)*200)
+elif x==1 and 5<n%7<7:
+    print((n//7*5+5)*200)
+elif x==2 and 1<=n%7<=4:
+    print((n//7*5+n%7)*200)
+elif x==2 and 4<n%7<=6:
+    print((n//7*5+4)*200)
+elif x==2 and n%7==0:
+    print(n//7*5*200)
+elif x==3 and 1<=n%7<=3:
+    print((n//7*5+n%7)*200)
+elif x==3 and 3<n%7<=5:
+    print((n//7*5+3)*200)
+elif x==3 and n%7==6:
+    print((n//7*5+4)*200)
+elif x==3 and n%7==0:
+    print(n//7*5*200)
+elif x==4 and 1<=n%7<=2:
+    print((n//7*5+n%7)*200)
+elif x==4 and 2<n%7<=4:
+    print((n//7*5+2)*200)
+elif x==4 and n%7==5:
+    print((n//7*5+3)*200)
+elif x==4 and n%7==6:
+    print((n//7*5+4)*200)
+elif x==4 and n%7==0:
+    print(n//7*5*200)
+elif x==5 and 1<=n%7<=3:
+    print((n//7*5+1)*200)
+elif x==5 and 3<n%7<=6:
+    print((n//7*5+(n%7-2))*200)
+elif x==5 and n%7==0:
+    print(n//7*5*200)
+elif x==6 and 1<=n%7<=2:
+    print(n//7*5*200)
+elif x==6 and 2<n%7<=6:
+    print((n//7*5+n%7-2)*200)
+elif x==6 and n%7==0:
+    print(n//7*5*200)
+elif x==7 and 1<=n%7<=6:
+    print((n//7*5+n%7-1)*200)
+elif x==7 and n%7==7:
+    print(n//7*5*200)

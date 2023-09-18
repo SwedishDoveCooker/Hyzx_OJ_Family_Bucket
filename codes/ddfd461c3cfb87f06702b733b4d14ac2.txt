@@ -1,0 +1,95 @@
+n,m,d = input().split()
+n = float(n)
+m = float(m)
+d = float(d)
+if m==1:
+    l=13
+elif m==2:
+    l=14
+else:
+    l=m   
+c = n//100
+y = n-100*c
+a = y//4
+b = c//4
+g = ((26*(l+1))/10)//1
+w = y+a+b-2*c+g+d-1
+z = w%7
+x = y%4
+
+
+if z==3 and x==0 and m==1:
+    print("Monday")  
+elif z==4 and x==0 and m==1:
+    print("Tuesday")
+elif z==5 and x==0 and m==1:
+    print("Wednesday")
+elif z==6 and x==0 and m==1:
+    print("Thursday")
+elif z==0 and x==0 and m==1:
+    print("Friday")
+elif z==1 and x==0 and m==1:
+    print("Saturday")
+elif z==2 and x==0 and m==1:
+    print("Sunday")
+
+elif z==3 and x==0 and m==2:
+    print("Monday")  
+elif z==4 and x==0 and m==2:
+    print("Tuesday")
+elif z==5 and x==0 and m==2:
+    print("Wednesday")
+elif z==6 and x==0 and m==2:
+    print("Thursday")
+elif z==0 and x==0 and m==2:
+    print("Friday")
+elif z==1 and x==0 and m==2:
+    print("Saturday")
+elif z==2 and x==0 and m==2:
+    print("Sunday")
+
+
+elif z==2 and m==1:
+    print("Monday")
+elif z==3 and m==1:
+    print("Tuesday")
+elif z==4 and m==1:
+    print("Wednesday")
+elif z==5 and m==1:
+    print("Thursday")
+elif z==6 and m==1:
+    print("Friday")
+elif z==0 and m==1:
+    print("Saturday")
+elif z==1 and m==1:
+    print("Sunday")
+
+elif z==2 and m==2:
+    print("Monday")
+elif z==3 and m==2:
+    print("Tuesday")
+elif z==4 and m==2:
+    print("Wednesday")
+elif z==5 and m==2:
+    print("Thursday")
+elif z==6 and m==2:
+    print("Friday")
+elif z==0 and m==2:
+    print("Saturday")
+elif z==1 and m==2:
+    print("Sunday")
+    
+elif z==1:
+    print("Monday")  
+elif z==2:
+    print("Tuesday")
+elif z==3:
+    print("Wednesday")
+elif z==4:
+    print("Thursday")
+elif z==5:
+    print("Friday")
+elif z==6:
+    print("Saturday")
+elif z==0:
+    print("Sunday")

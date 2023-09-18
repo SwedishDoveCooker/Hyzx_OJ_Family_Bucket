@@ -1,0 +1,120 @@
+import math
+a,b=input().split()
+a=float(a)
+b=float(b)
+c=math.ceil(b)
+if b>20:
+    x=(c-20)*0.015*a
+    print(format(x,".2f"))
+else:
+    print("0.00")
+'''
+print("本期五星up:★ ★ ★ ★ ★ 雷电将军")
+print("本期四星up：★ ★ ★ ★ 班尼特，★ ★ ★ ★ 九条裟罗，★ ★ ★ ★ 辛焱")
+sixing = ["★ ★ ★ ★ 安柏","★ ★ ★ ★ 凯亚","★ ★ ★ ★ 丽莎","★ ★ ★ ★ 迪奥娜",
+"★ ★ ★ ★ 芭芭拉","★ ★ ★ ★ 罗莎利亚","★ ★ ★ ★ 砂糖","★ ★ ★ ★ 雷泽","★ ★ ★ ★ 班尼特",
+"★ ★ ★ ★ 菲谢尔","★ ★ ★ ★ 香菱","★ ★ ★ ★ 行秋",
+"★ ★ ★ ★ 重云","★ ★ ★ ★ 辛焱","★ ★ ★ ★ 北斗",
+"★ ★ ★ ★ 烟绯","★ ★ ★ ★ 凝光","★ ★ ★ ★ 五郎",
+"★ ★ ★ ★ 九条裟罗","★ ★ ★ ★ 早柚","★ ★ ★ ★ 托马"]
+baodi=0
+while True:
+    cs = int(input("你的抽数是:"))
+    jczy = cs
+    import random as a
+    c = 0
+    d = baodi
+    f = 0
+    if jczy == 0:
+        print("就这还想抽老婆？")
+    while jczy > 0:
+        b = a.randint(1,1000)
+        if 1<= b <= 6 or d==89:
+            e = a.randint(1,10)
+            if e == 1:
+                print("★ ★ ★ ★ ★ 琴")
+                f = 1
+            elif e == 2:
+                print("★ ★ ★ ★ ★ 刻晴")
+                f = 1
+            elif e == 3:
+                print("★ ★ ★ ★ ★ 莫娜")
+                f = 1
+            elif e == 4:
+                print("★ ★ ★ ★ ★ 七七")
+                f = 1
+            elif e == 5:
+                print("★ ★ ★ ★ ★ 迪卢克")
+                f = 1
+            elif 6 <= e <= 10 or f == 1:
+                print("★ ★ ★ ★ ★ 雷电将军")
+                f = 0
+            print("第",d+1,"发出货")
+            d = 0
+            c += 1
+            jczy-=1
+        elif 6< b<= 71 or c==9:
+            g = a.randint(0,80)
+            if 0<= g <=20:
+                print(sixing[g])
+            if 21<= g <=40:
+                print("★ ★ ★ ★ 辛焱")
+            if 41<= g <=60:
+                print("★ ★ ★ ★ 九条裟罗")
+            if 61<= g<=80:
+                print("★ ★ ★ ★ 班尼特")
+            c = 0
+            d+=1
+            jczy-=1
+        elif 71< b<= 164:
+            print("★ ★ ★ 冷刃")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 164< b<= 257:
+            print("★ ★ ★ 黑缨枪")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 257< b<= 350:
+            print("★ ★ ★ 黎明神剑")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 350< b<= 443:
+            print("★ ★ ★ 以理服人")
+            d += 1
+            c += 1
+            jczy-=1
+        elif 443< b<= 536:
+            print("★ ★ ★ 弹弓")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 536< b<= 629:
+            print("★ ★ ★ 魔导绪论")
+            d+=1
+            c+=1
+            jczy-=1
+        elif 629< b<= 722:
+            print("★ ★ ★ 讨龙英杰潭")
+            d += 1
+            c += 1
+            jczy-=1
+        elif 722< b<= 815:
+            print("★ ★ ★ 沐浴龙血的剑")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 815< b<= 908:
+            print("★ ★ ★ 神射手之誓")
+            d += 1
+            c += 1
+            jczy -= 1
+        elif 908< b<= 1000:
+            print("★ ★ ★ 白缨枪")
+            d += 1
+            c += 1
+            jczy -= 1
+    baodi=d
+'''

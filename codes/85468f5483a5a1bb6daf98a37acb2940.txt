@@ -1,0 +1,696 @@
+"""
+    @Author:彦东;魔改:KAIZEY
+    @qq:2537598838
+    @如有疑问或意见请联系此qq
+    @版本:1.1.3(魔改版)
+    @后面会继续更新剧情角色
+    @本次更新加入新怪物：陨石
+    @魔改角色:幸运儿、芋头、青龙
+"""
+
+import random
+import time
+from threading import Thread
+
+a = [0.33, 0.33, 0.33]
+b = [0, 0, 0]
+c = [0, 0]
+
+
+def function1(n, m):
+    if (n == 3 and m == 1) or (n == 2 and m == 3) or (n == 1 and m == 2):
+        print("YOU WIN")
+        c[0] += 1
+    elif (n == 3 and m == 2) or (n == 2 and m == 1) or (n == 1 and m == 3):
+        print("YOU LOSE")
+        c[1] += 1
+    else:
+        print("CONTINUE")
+
+
+for i in range(1):
+    n = input('1:石头，2：剪刀，3：布')
+    if n == '1':
+        b[0] += 1
+    elif n == '2':
+        b[1] += 1
+    elif n == '3':
+        b[2] += 1
+    else:
+        while n != '1' and n != '2' and n != '3':
+            n = input('不要皮了！123：')
+    x = random.random()
+    if x <= a[0]:
+        print('布')
+        m = 3
+        function1(int(n), m)
+    elif x > a[0] + a[1]:
+        print('剪刀')
+        m = 2
+        function1(int(n), m)
+    else:
+        print('石头')
+        m = 1
+        function1(int(n), m)
+    if i >= 20:
+        a[0] = b[0] / (b[0] + b[1] + b[2])
+        a[1] = b[1] / (b[0] + b[1] + b[2])
+        a[2] = b[2] / (b[0] + b[1] + b[2])
+    if c[1] > c[0]:
+        print('你已经输了这么多把了！')
+    elif c[1] < c[0]:
+        print('你很强大嘛小伙子！看样子已经奖励自己很多次了！')
+    else:
+        print('棋逢对手，人生一大幸事！')
+time.sleep(0.5)
+print('...')
+time.sleep(2)
+print("你赢了{}局，输了{}局".format(c[0], c[1]))
+time.sleep(1)
+jk = {'白羊': '♈', '金牛': '♉', '双子': '♊', '巨蟹': '♋', '狮子': '♌', '天秤': '♎', '天蝎': '♏', '射手': '♐',
+      '摩羯': '♑', '双鱼': '♓', '水瓶': '♒', '处女': '♍','幸运儿':'の','芋头':'㊣','青龙':'♂'}
+print('...')
+time.sleep(1)
+print("哈哈哈有意思，好久没有见到奖励自己这么多次的小家伙了")
+time.sleep(1)
+print('接下来还有一个小游戏努力奖励自己吧！')
+xz = input('请输入星座（例子：摩羯）：')
+
+while xz not in jk:
+    xz = input('请正确输入：')
+
+cxue = 5
+farbeat = 1.5
+nearbeat = 2
+farbeat_len = 9
+nearbeat_len = 4
+farbeat_wide = 4
+nearbeat_wide = 2
+jineng = False
+cd = 0
+jineng_time = 0
+
+def tiancheng():
+    global jineng,tc_zt,cd,xue,jineng_time
+    if jineng and cd==0:
+        tc_zt=True
+        xue-=2
+        jineng_time=25
+        cd=90
+    else:
+        jineng=False
+    if jineng_time>0:
+        jineng_time-=1
+    elif jineng_time==0:
+        tc_zt=False
+    if cd>0:
+        cd-=1
+    
+def chunv():
+    global jineng,cn_zt,cd,jienng_time
+    pass
+    
+
+def jn_yd(x):
+    global nt, t, nm
+    a = {0: 15, 1: 15}
+    b = [2, 3, 10, 11, 12]
+    for i in range(2):
+        for k in range(15):
+            if nm[i][k] in b:
+                if a[i] > k:
+                    a[i] = k
+    for i in range(2):
+        for k in range(0,15):
+            if nt[i][k] == 6:
+                if a[i] > a[(i + 1) % 2]:
+                    nt[(i + 1) % 2][k] = nt[i][k]
+                    nt[i][k] = 0
+
+    if t % x == 0:
+        for i in range(2):
+            for k in range(14, 0, -1):
+                nt[i][k] = nt[i][k - 1]
+            nt[i][0] = 0
+
+
+def juxie():
+    global jineng, jineng_time, cd, nt
+    if jineng and cd == 0:
+        cd= 90
+        jineng_time = 21
+        jineng=False
+    else:
+        jineng = False
+    if jineng_time > 0:
+        jineng_time -= 1
+    if jineng_time > 0 and nt[0][0] !=6:
+        nt[0][0] = 6
+    if cd > 0:
+        cd -= 1
+    jn_yd(3)
+
+
+def mojie():
+    global mj_zt, jineng, jineng_time, cd
+    if jineng and cd == 0:
+        jineng_time = 20
+        cd = 80
+        mj_zt = True
+    else:
+        jineng = False
+    if cd > 0:
+        cd -= 1
+    if jineng_time > 0:
+        jineng_time -= 1
+    elif jineng_time == 0:
+        mj_tz = False
+
+
+def shizi():
+    global jineng, shizi_zt, nearbeat, cd, jineng_time
+    near_beat = 3
+    if cd == 0 and jineng:
+        jineng_time = 20
+        jineng = False
+        cd = 90
+        shizi_zt = True
+    else:
+        jineng = False
+    if cd > 0:
+        cd -= 1
+    if jineng_time > 0:
+        jineng_time -= 1
+    elif jineng_time == 0:
+        shizi_zt = False
+    jn_yd(2)
+
+
+def tianxie():
+    global tx_zt, jineng, cd, jineng_time
+    if cd == 0 and jineng:
+        cd = 60
+        tx_zt = True
+        jineng_time = 25
+    else:
+        jineng = False
+    if jineng_time > 0:
+        jineng_time -= 1
+    elif jineng_time == 0:
+        tx_zt = False
+    if cd > 0:
+        cd -= 1
+
+def qinglong():  #1.召唤神龙 2.概率免伤
+    global jineng,cd,rw,nt,jineng,beatst
+    t = 0
+    if cd == 0 and jineng:
+        cd = 60
+        nt[rw][4] = 8
+        jineng = False
+    else:
+        jineng = False
+    if cd > 0:
+        cd -= 1
+    jn_yd(1.5)
+    x = random.random()
+    if x <= 0.25:
+        beatst = False
+    else:
+        beatst = True
+    
+def baiyang():  # 召唤一条白羊清空一条轨道
+    global jineng, cd, rw, nt, jineng
+    if cd == 0 and jineng:
+        cd = 90
+        nt[rw][4] = 2
+        jineng = False
+    else:
+        jineng = False
+    if cd > 0:
+        cd -= 1
+    jn_yd(1.5)
+
+
+def sheshou():  # 攻击为5血，有25%几率暴击，近普伤害为1血。
+    global nearbeat, farbeat
+    farbeat = 5
+    nearbeat = 1
+    x = random.random()
+    if x <= 0.2:
+        farbeat = 10
+    else:
+        farbeat = 5
+
+def yutou():  #血量为1000，攻击伤害降至-1。
+    global cxue, t, xue, nearbeat, farbeat
+    farbeat = nearbeat = -1
+    cxue = 1000
+    if t == 0:
+        xue = cxue
+
+def lucky():  # 攻击为1血，10%几率暴击1000，25%暴击100。
+    global nearbeat, farbeat
+    farbeat = 1
+    nearbeat = 1
+    x = random.random()
+    if x <= 0.1:
+        farbeat = nearbeat = 1000
+    if x > 0.1 and x <= 0.35:
+        farbeat = nearbeat = 100
+    else:
+        farbeat = 1
+
+def shuangyu():  # 普攻变为两发，第二发变为减速
+    global jineng, jineng_time, cd, sy_zt, nt, far_zt, near_zt, rw
+    if cd == 0 and jineng:
+        cd = 60
+        jineng_time = 40
+        sy_zt = True
+    else:
+        jineng = False
+    if jineng_time >= 1:
+        if far_zt and t % 4 == 0:
+            nt[rw][2] = 5
+        if near_zt and t % 4 == 0:
+            nt[rw][2] = 5
+        jineng_time -= 1
+    if jineng_time == 0:
+        jineng = False
+        sy_zt = False
+    if cd > 0:
+        cd -= 1
+    jn_yd(2)
+
+
+def jinniu():  # 初始血量提升三滴，有百分之二十几率免伤
+    global cxue, beatst, t, xue
+    cxue = 8
+    if t == 0:
+        xue = cxue
+    x = random.random()
+    if x <= 0.2:
+        beatst = False
+    else:
+        beatst = True
+
+
+def shuiping():
+    global cd, jineng_time, jineng, nt
+    if cd == 0 and jineng:
+        cd = 45
+        jineng_time = 15
+    else:
+        jineng = False
+    if jineng_time > 0:
+        nt = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+        jineng_time -= 1
+    if jineng_time == 0:
+        nt = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        jineng = False
+    if cd > 0:
+        cd -= 1
+
+
+def shuangzi():
+    global jineng, jineng_time, cd, sz_zt, far_zt, near_zt, t
+    if cd == 0 and jineng:
+        cd = 60
+        sz_zt = True
+        jineng_time = 45
+    else:
+        jineng = False
+    if jineng_time > 0:
+        if near_zt:
+            nt[1][1] = 3
+        elif far_zt and t % 4 == 0:
+            nt[1][1] = 4
+        jineng_time -= 1
+    if jineng_time == 0:
+        jineng = False
+        sz_zt = False
+    if cd > 0:
+        cd -= 1
+    jn_yd(2)
+
+
+def gongji1():
+    global sb, t, nt
+    a = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    for i in range(2):
+        for k in range(14):
+            if sb[i][k] == 2 and k == 4:
+                sb[i][k] = 0
+            if nt[i][k] == 3 and k == 5:
+                nt[i][k] = 0
+            a[i][k + 1] = sb[i][k]
+    if t % 2 == 0:
+        sb = a
+
+
+def pd(rw):
+    global sb, t, nm, nt, sg, xue, gr, qg, wd, js, ab, ac, ad, ae, beatst, js_zt, farbeat, nearbeat, tx_zt, mj_zt
+    a = {1: farbeat, 2: nearbeat, 3: farbeat, 4:20,5:farbeat}  # 普攻伤害
+    b = {1: 2, 2: 100, 3: 2, 4: 1, 5: 3, 6: 4,7:3,8:100}  # 技能伤害
+    g = {11: 0, 2: 1, 3: 10, 12: 0, 10: 4}  # 怪物伤害
+    for i in range(2):
+        for k in range(3, 15):
+            if sb[i][k] != 0 and sg[i][k] != 0:
+                x = random.random()
+                if mj_zt:
+                    if x < 0.1:
+                        xue += 1
+                sg[i][k] -= a[sb[i][k]]
+                if sb[i][k]==4:
+                    for u in range(2):
+                        for l in range(k-1,k+2):
+                            if l>14:
+                                l=14
+                            nt[u][l]=7
+                if not tx_zt:
+                    sb[i][k] = 0
+                
+            if nt[i][k] != 0 and sg[i][k] != 0:
+                sg[i][k] -= b[nt[i][k]]
+                if xz == '双子' or xz == '巨蟹' or xz=='天秤':
+                    nt[i][k] = 0
+                if xz == '双鱼':
+                    ae = t
+                    nt[i][k] = 0
+
+                    js_zt = True
+            if sg[i][k] <= 0 and nm[i][k] in g:
+                sg[i][k] = 0
+                if nm[i][k] == 2:
+                    gr += 10
+                elif nm[i][k] == 11 or nm[i][k] == 12:
+                    gr += 2
+                elif nm[i][k] == 3:
+                    gr += 80
+                elif nm[i][k] == 10:
+                    gr += 15
+                nm[i][k] = 5
+            if qg and sg[i][k] != 0 and t % 2 == 0:
+                sg[i][k] -= 1
+    if nm[rw][2] == 8:
+        xue += 1
+        nm[rw][2] = 0
+    elif nm[rw][2] == 6:
+        nm[rw][2] = 0
+        qg = True
+        ab = t
+    elif nm[rw][2] == 9:
+        nm[rw][2] = 0
+        wd = True
+        ac = t
+    elif nm[rw][2] == 7:
+        nm[rw][2] = 0
+        js = True
+        js_zt = True
+        ad = t
+    if nm[rw][2] != 0:
+        if not wd and beatst:
+            xue -= g[nm[rw][2]]
+        nm[rw][1] = nm[rw][2]
+        nm[rw][2] = 0
+    if qg:
+        if t - ab == 6:
+            qg = False
+    if wd:
+        if t - ac == 25:
+            wd = False
+    if js:
+        if t - ad == 25:
+            js_zt = False
+            js = False
+    elif js_zt:
+        if t - ae == 18:
+            js_zt = False
+
+
+def yidong():
+    global nm, t, sg, js_zt, shizi_zt
+    if js_zt:
+        c = 6
+    else:
+        c = 4
+    a = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    b = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    if t % c == 0 and not shizi_zt:
+        for i in range(2):
+            for k in range(1, 15):
+                a[i][k - 1] = nm[i][k]
+                b[i][k - 1] = sg[i][k]
+        nm = a
+        sg = b
+
+
+def tiaoyue():
+    global rw, t, ty, up_zt
+    if up_zt:
+        ty = t
+        rw = 0
+        up_zt = False
+    if t - ty >= 6:
+        rw = 1
+
+
+def scg():
+    global nm, t, sg, shizi_zt
+    if js:
+        d = 6
+    else:
+        d = 4
+    a = [0.7, 0.2, 0.1]  # 场景
+    b = [0.5, 0.2, 0.1, 0.2]  # 怪物
+    c = [0.1, 0.2, 0.4, 0.3]  # 道具
+    if t % d == 0 and not shizi_zt:
+        x = random.random()
+        if a[0] + a[1] <= x:
+            x = random.random()
+            if x <= c[0]:
+                nm[0][14] = 6
+            elif c[0] < x <= c[0] + c[1]:
+                nm[0][14] = 7
+            elif c[0] + c[1] < x <= c[0] + c[1] + c[2]:
+                nm[0][14] = 8
+            else:
+                nm[0][14] = 9
+
+        if a[0] <= x <= a[1] + a[0]:
+            x = random.random()
+            if x <= b[0]:
+                nm[1][14] = 2
+                sg[1][14] = 6
+            elif b[0] < x <= b[0] + b[1]:
+                nm[0][14] = 11
+                nm[1][14] = 12
+                sg[1][14] = 2
+                sg[0][14] = 2
+            elif b[0] + b[1] < x < b[0] + b[1] + b[2]:
+                nm[1][14] = 3
+                sg[1][14] = 80
+            else:
+                nm[0][14] = 10
+                sg[0][14] = 20
+
+
+def shuchu():
+    global sc, nm, sb, shengc, gongji, rw, xue, nt, jn, sz_zt, text2
+    a = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    b = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    c = ''
+    e = ''
+    d = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    for i in range(2):
+        for k in range(15):
+            a[i][k] = shengc[nm[i][k]]
+            b[i][k] = gongji[sb[i][k]]
+            d[i][k] = jn[nt[i][k]]
+            if nm[i][k] != 0:
+                sc[i][k] = a[i][k]
+                if nm[i][k] == 5:
+                    nm[i][k] = 0
+            elif sb[i][k] != 0:
+                sc[i][k] = b[i][k]
+            elif nt[i][k] != 0:
+                sc[i][k] = d[i][k]
+            else:
+                sc[i][k] = '_'
+    sc[rw][2] = shengc[1]
+    if sz_zt:
+        sc[1][1] = shengc[1]
+    if xue <= 0:
+        sc[rw][2] = shengc[4]
+    print(' ')
+    for i in sc:
+        c = ''
+        for k in i:
+            c += k
+        print(c)
+        e += c + '\n'
+    text2.set(e)
+
+
+def faq1():
+    global sb, t, rw, far_zt, near_zt
+    if t % 4 == 0 and far_zt:
+        if xz == '射手' or xz == '幸运儿':
+            sb[rw][3] = 3
+        elif xz == '青龙':
+            sb[rw][3] = 5
+        elif tc_zt:
+            sb[rw][3] = 4
+        else:
+            sb[rw][3] = 1
+        far_zt = False
+    elif t % 2 == 0 and near_zt:
+        sb[rw][3] = 2
+        near_zt = False
+
+
+def xingzuo():
+    global xz
+    if xz == '青龙':
+        qinglong()
+    if xz == '芋头':
+        yutou()
+    if xz =='幸运儿':
+        lucky()
+    if xz == '水瓶':
+        shuiping()
+    if xz == '白羊':
+        baiyang()
+    if xz == '金牛':
+        jinniu()
+    if xz == '双子':
+        shuangzi()
+    if xz == '双鱼':
+        shuangyu()
+    if xz == '射手':
+        sheshou()
+    if xz == '摩羯':
+        mojie()
+    if xz == '天蝎':
+        tianxie()
+    if xz == '狮子':
+        shizi()
+    if xz == '巨蟹':
+        juxie()
+    if xz== '天秤':
+        tiancheng()
+    if xz=='处女':
+        chunv()
+
+
+nm = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]  # 角色（后面为地面）
+sb = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]  # 攻击
+nt = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]  # 技能
+sg = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]  # 血量
+sc = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]  # 输出
+t = 0
+rw = 1  # 人物纵坐标
+shengc = {0: ' ', 1: jk[xz], 2: '☹', 3: '☣', 4: '☀', 5: '☠', 6: '☯', 7: '☸', 8: '❤', 9: '卍', 10: '☄', 11:
+    '阿', 12: '巴', 'a': '※', 'b': '☸', 'c': '❤', 'd': '卍'}
+gongji = {0: ' ', 1: '•', 2: '❃', 3: '☞',4:'♦',5:'sb'}  # ™▷▶☞☛※♪
+jn = {0: ' ', 1: '⊹', 2: '⊰', 3: '❃', 4: '◦', 5: '☾', 6: '☋',7:'⊹',8:'✄'}
+xue = 5
+far_zt = False  # 远攻状态
+near_zt = False  # 近攻状态
+up_zt = False  # 跳跃状态
+ql_zt = False  #青龙技能
+sy_zt = False  # 双鱼技能
+tx_zt = False  # 天蝎技能
+sz_zt = False  # 双子技能
+shizi_zt = False  # 狮子技能
+mj_zt=False  #摩羯技能
+tc_zt=False  #天秤技能
+ty = 10000
+ae = 0
+ab = 0
+ac = 0
+ad = 0
+gr = 0  # 得分
+qg = False
+wd = False
+js = False
+js_zt = False
+beatst = True
+
+
+def func():
+    global xue, rw, t, gr
+    while True:
+        xingzuo()
+        faq1()
+        tiaoyue()
+        if gr <= 100:
+            time.sleep(0.2)
+        elif 100 < gr <= 250:
+            time.sleep(0.1)
+        elif 250 < gr:
+            time.sleep(0.05)
+
+        t += 1
+        gongji1()
+        pd(rw)
+        if xue <= 0:
+            shuchu()
+            print('游戏结束，得分：{}'.format(gr))
+            break
+        yidong()
+        pd(rw)
+        scg()
+        shuchu()
+
+
+# -*- coding: UTF-8 -*-
+
+import tkinter as tk
+
+h = Thread(target=func)
+h.start()
+
+
+def bun1(event):
+    global text1, xue, far_zt, gr
+    far_zt = True
+    text1.set('分数：' + str(gr) + '\n血量：' + str(xue))
+
+
+def bun2(event):
+    global text1, xue, gr, near_zt
+    near_zt = True
+    text1.set('分数：' + str(gr) + '\n血量：' + str(xue))
+
+
+def func(event):
+    global text1, xue, gr, up_zt
+    up_zt = True
+    text1.set('分数：' + str(gr) + '\n血量：' + str(xue))
+
+
+def bun3(event):
+    global text1, xue, jineng
+    jineng = True
+    text1.set('分数：' + str(gr) + '\n血量：' + str(xue))
+
+
+root = tk.Tk()
+root.title('操作框')
+root.geometry('300x300')
+text1 = tk.StringVar()
+text1.set('分数：0\n' + '血量：5')
+text2 = tk.StringVar()
+label2 = tk.Label(root, fg='White', bg='Black', font=('Freestyle Scrip', 18), textvariable=text2).pack()
+label1 = tk.Label(root, textvariable=text1).pack()
+frame = tk.Frame(root, bg='khaki', width=120, height=120)
+frame.bind('<Button-1>', bun1)
+frame.bind('<Button-3>', bun2)
+root.bind('w', bun3)
+root.bind('<space>', func)
+root.bind('n', bun1)
+root.bind('m', bun2)
+frame.pack()
+label2 = tk.Label(root, text='鼠标左键或n键远攻，w键技能，鼠标左键或m键近攻。\n空格跳跃，键盘英文输入，鼠标必须在上面区域点击').pack()
+root.mainloop()

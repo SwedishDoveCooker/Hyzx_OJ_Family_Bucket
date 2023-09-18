@@ -1,0 +1,142 @@
+a = int(input())
+b = int(input())
+print(a+b)
+  
+'''
+# _*_ coding: utf-8 _*_
+# Date: 2019/8/10 0010 13:42
+# Author: Mijiu
+# Version: 1.0
+import time            # 引用时间模块
+import random          # 引用随机数模块
+
+class HM():        #    战斗者类
+    def __init__(self,name,bis):      # 初始化函数  bis为必杀技
+        self.HP = random.randint(5000, 7000)        # 血量为 5000-7000随机数
+        self.name = name
+        self.bis = bis
+        self.MP = random.randint(100, 200)          # 蓝量为100-200随机数
+
+    def chuc(self):                           # 怪兽出场类方法 (没什么用 ,瞎写的,可忽略)
+        """怪兽出场!!!"""
+        print("雷声阵阵....!")
+        time.sleep(1)                 # 睡眠一秒输出
+        print("突然....!")
+        time.sleep(1)
+        print("啊.......呜")
+        time.sleep(1)
+        print(f"\033[1;31;0m{self.name}出现啦.....!!!\033[0m")
+        time.sleep(1)
+        print(f"{self.name}出现啦!!!世界完蛋了,大家快跑啊!!")
+
+
+    def PG(self):              #  普通攻击方法
+        """普通攻击!"""
+        time.sleep(1)
+        print(f"{self.name}进行攻击!")
+        A = random.randint(400,700)         # 普通攻击伤害为400-700的随机数
+        self.MP += 10                       # 每次攻击恢复10点蓝 
+        time.sleep(1)
+        print(f"伤害: {A}")
+        time.sleep(1)
+        print(f"{self.name}的MP恢复了10点!")
+        return A
+
+
+
+    def bao(self):    # 必杀技
+        if self.MP>=50:         # 如果蓝量大于50可释放
+            time.sleep(1)
+            print(">>>>>>>>>>>>>>>>")
+            time.sleep(1)
+            print(">>>>>>>>>")
+            time.sleep(1)
+            print(f"{self.name}必杀技")
+            time.sleep(1)
+            print(f"----{self.bis}-----")
+            time.sleep(1)
+            self.MP -= 50           # 释放后蓝量-50
+            print(f"MP下降50!   MP: {self.MP}")
+            B =random.randint(1000,1500)
+
+            print(f"\033[1;31;0m伤害为{B}!!!\033[0m")
+            return B
+        else:
+            time.sleep(1)
+            print(f"{self.name}MP不足无法释放绝招")
+            return False
+
+    def __str__(self):            # 内置魔法方法,输出对象时输出
+
+        return f"\033[1;31;0m----{self.name}----       HP:{self.HP} MP:{self.MP}\033[0m"
+
+class Monster(HM):                   # 怪兽类 ,继承战斗者类
+    def __init__(self, name, bis):
+        super().__init__(name,bis)
+
+class outman(HM):              # 奥特曼类,继承战斗者类
+    def __init__(self,name,bis):
+        super().__init__(name,bis)
+
+    def chuc(self):           # 重写出场方法(没什么用 ,瞎写的,可忽略)
+        """奥特曼特色登场"""
+        print("是他..是他...!")
+        time.sleep(1)
+        print("....就是他....!")
+        time.sleep(1)
+        print("我们的朋友....!")
+        time.sleep(1)
+        print(f"\033[1;31;0m{self.name}出现啦.....大家有救了!!!!\033[0m")
+        print("")
+
+
+
+def main():   # 执行函数
+    num = 0
+    outman_name = input("请输入您选择的奥特曼:   ")          
+    outman_bos = input("奥特曼的大招:   ")
+    monster_name = input("请输入您选择的怪兽:   ")
+    monster_bos = input("怪兽的绝招:  ")
+    A = outman(outman_name,outman_bos)          # 奥特曼实例化
+    B = Monster(monster_name,monster_bos)       # 怪兽实例化
+    print("\033[1;37;40m本次奥特曼和怪兽之战!\033[0m")
+    time.sleep(1)
+    print("\033[1;37;40m以公平,公正,公开为原则!\033[0m")
+    time.sleep(1)
+    print("\033[1;37;40m所以说,并不是奥特曼必胜.\033[0m")
+    time.sleep(1)
+    B.chuc()                  # 怪兽调用出场方法
+    A.chuc()
+    while True:
+        if B.HP>0 and A.HP>0:         # 如果怪兽和奥特曼都有血量就执行
+            num += 1
+            time.sleep(1)
+            print(f"\033[1;37;40m============第{num}回合=============\033[0m")
+            time.sleep(1)
+            print(A)            # 输出对象,自动执行了上面的__str__魔法方法
+            time.sleep(1)
+            print(B)
+            a = random.randint(0,100)         # 随机攻击回合
+            if a >60:                     # 如果>60奥特曼攻击 ,怪兽掉血
+                B.HP -= A.PG()
+            elif 60>=a>20:
+                A.HP -= B.PG()
+            elif 20>=a>10:        # 如果是10-20直接奥特曼放绝招,怪兽掉血
+
+                B.HP -= A.bao()
+            else:
+                A.HP -= B.bao()
+        else:
+            if B.HP<=0:              # 怪兽血为0,奥特曼获胜
+                time.sleep(1)
+                print(f"\033[1;32;41m{A.name}WIN!!!!\033[0m")
+                break
+
+            else:
+                time.sleep(1)
+                print(f"\033[1;32;41m{B.name}WIN!!!!\033[0m")
+                time.sleep(1)
+                print("世界灭亡!")
+                break
+main()
+'''

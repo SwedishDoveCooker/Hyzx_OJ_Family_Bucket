@@ -1,0 +1,24 @@
+n,m,x,y = map(int,input().split()) #n:说的总人数；x:故意错误的人数；m：说蛋的人数；y：故意告诉与自己知道的相反的人数
+a = False
+b = False
+p=abs(x-y) 
+q=x+y
+if q>n:
+    q=2*n-q
+if p<=m<=q and (m-p)%2==0: #鸡
+    a=True
+if p<=n-m<=q and (n-m-p)%2==0:#蛋
+    b=True
+if a and not b:
+    print("The chicken")
+elif b and not a:
+    print("The egg")
+elif a and b:
+    print("Ambiguous")
+else :
+    print("The oracle is a lie")
+#常识：正确的答案+错误的答案=总的答案数量
+#情况1：x,y不重叠，即x，y人说的答案都是错误的，即错误答案之和为x+y;
+#情况二：x,y有重叠，即指知道错误答案的人说了与自己所知道的相反的，也就是说一部分知道错误答案的人说了正确的答案，那么剩下一部分仍然说了错误的答案，在这里我们取一个极端值，即x人知道错误答案但都说了与自己得到的相反答案（即正确的答案，此时x是y的子集），那么就剩下y-x人说了错误的答案；同理如果y人知道的答案都是错误的，那么x中所有剩下的人说的都是正确的答案，即x-y的人说了错误的答案:
+# 所以说(x-y) or (y-x)<=错误的答案的人数<=x+y; 
+#那么我们假设答案是蛋，只要说鸡的人数（即说了错误答案的人书）在范围内，就成立；反之亦然。
